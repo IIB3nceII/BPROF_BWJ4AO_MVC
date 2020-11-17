@@ -19,7 +19,7 @@ namespace Models
             public int StartingWeight { get; set; }
             [Required]
             public int MaximumWeight { get; set; }
-            public virtual ICollection<Competitor> Competitor { get; set; }
+            public virtual ICollection<Competitor> Competitors { get; set; }
 
       }
 }
