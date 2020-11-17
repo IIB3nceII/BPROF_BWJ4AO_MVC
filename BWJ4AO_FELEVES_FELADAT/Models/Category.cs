@@ -12,12 +12,14 @@ namespace Models
       public class Category
       {
             [Key]
+            public string CategoryId { get; set; }
             [Required]
             public CategoryType Name { get; set; }
             [Required]
             public int StartingWeight { get; set; }
             [Required]
             public int MaximumWeight { get; set; }
+            public virtual ICollection<Competitor> Competitor { get; set; }
 
       }
 }

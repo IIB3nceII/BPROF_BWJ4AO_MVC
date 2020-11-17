@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 
@@ -26,11 +27,14 @@ namespace Models
             [Required]
             [Range(50,150)]
             public double Weight { get; set; }
-            [Required]
-            public virtual Category Category { get; set; }
-            public virtual Sponsor Sponsor { get; set; }
             [Range(1,30)]
             public int AchivedPlace { get; set; }
+            [NotMapped]
+            public virtual Category Category { get; set; }
+            [NotMapped]
+            public virtual Sponsor Sponsor { get; set; }
+            public string CategoryId { get; set; }
+            public string SponsorId { get; set; }
       }
 }
 
