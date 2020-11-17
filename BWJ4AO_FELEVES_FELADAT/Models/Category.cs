@@ -9,10 +9,14 @@ namespace Models
       {
             MrOlympia, ClassicPhysique, MensPhisyque,WomensBikini
       }
-      public class Categories
+      public class Category
       {
+            [Key]
+            [Required]
             public CategoryType Name { get; set; }
+            [Required]
             public int StartingWeight { get; set; }
+            [Required]
             public int MaximumWeight { get; set; }
 
       }

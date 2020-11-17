@@ -14,6 +14,7 @@ namespace Models
       {
             [Key]
             [Required]
+            [Range(1,200)]
             public int Number { get; set; }
             [Required]
             public string Name { get; set; }
@@ -23,10 +24,12 @@ namespace Models
             public GenderType Gender { get; set; }
             public double Height { get; set; }
             [Required]
+            [Range(50,150)]
             public double Weight { get; set; }
             [Required]
-            public int Category { get; set; }
-            public Sponsor Sponsor { get; set; }
+            public virtual Category Category { get; set; }
+            public virtual Sponsor Sponsor { get; set; }
+            [Range(1,30)]
             public int AchivedPlace { get; set; }
       }
 }
