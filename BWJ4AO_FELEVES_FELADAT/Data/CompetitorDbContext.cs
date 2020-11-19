@@ -7,8 +7,8 @@ namespace Data
       public class CompetitorDbContext : DbContext
       {
             public DbSet<Competitor> Competitors { get; set; }
-            public DbSet<Competitor> Categories { get; set; }
-            public DbSet<Competitor> Sponsors { get; set; }
+            public DbSet<Category> Categories { get; set; }
+            public DbSet<Sponsor> Sponsors { get; set; }
 
             public CompetitorDbContext(DbContextOptions<CompetitorDbContext> opt) : base(opt)
             {
