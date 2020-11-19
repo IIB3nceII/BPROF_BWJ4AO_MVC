@@ -48,13 +48,17 @@ namespace Repository
 
             public void UpdateData(string name, Sponsor item)
             {
-                  var oldSp = FindOne(name);
-                  oldSp.Name = item.Name;
-                  oldSp.Nationality = item.Nationality;
-                  oldSp.Placeholder = item.Placeholder;
-                  oldSp.Type = item.Type;
+                  var oldSponsor = FindOne(name);
+                  oldSponsor.Name = item.Name;
+                  oldSponsor.Nationality = item.Nationality;
+                  oldSponsor.Placeholder = item.Placeholder;
+                  oldSponsor.Type = item.Type;
+                  foreach (var competitor in item.Competitors)
+                  {
+                        oldSponsor.Competitors.Add(competitor);
+                  }
 
-                  cont.SaveChanges
+                  cont.SaveChanges();
 
             }
       }

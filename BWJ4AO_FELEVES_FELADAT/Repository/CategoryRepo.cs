@@ -23,15 +23,15 @@ namespace Repository
                   SaveAll();
             }
 
-            public void Delete(int number)
+            public void Delete(string st)
             {
-                  Delete(FindOne(number));
+                  Delete(FindOne(st));
             }
 
-            public Category FindOne(int stw)//itt nem teljesen jó az int de a compnal az kene
+            public Category FindOne(string st)
             {
                   var q = (from x in cont.Categories
-                           where x.StartingWeight == stw
+                           where x.CategoryId == st
                            select x).FirstOrDefault();
 
                   return q;
@@ -47,11 +47,17 @@ namespace Repository
                   cont.SaveChanges();
             }
 
-            public void UpdateData(int stw, Category item)
+            public void UpdateData(string st, Category item)
             {
-                  var oldStW = FindOne(stw);
-                  oldStW.StartingWeight = item.StartingWeight;
-                  oldStW.MaximumWeight = item.MaximumWeight;
+                  var oldCategory = FindOne(st);
+                  oldCategory.Name = item.Name;
+                  oldCategory.StartingWeight = item.StartingWeight;
+                  oldCategory.MaximumWeight = item.MaximumWeight;
+                  oldCategory.Competitors.Clear();
+                  foreach (var competitor in item.Competitors)
+                  {
+                        oldCategory.Competitors.Add(competitor);
+                  }
 
                   cont.SaveChanges();
             }

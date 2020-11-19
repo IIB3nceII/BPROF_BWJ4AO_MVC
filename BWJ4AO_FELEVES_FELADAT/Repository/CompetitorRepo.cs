@@ -31,7 +31,7 @@ namespace Repository
             public Competitor FindOne(string st)
             {
                   var q = (from x in cont.Competitors
-                           where x.Id == st
+                           where x.CompetitorId == st
                            select x).FirstOrDefault();
 
                   return q;
