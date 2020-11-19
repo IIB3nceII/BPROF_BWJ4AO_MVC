@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BWJ4AO_FELEVES_FELADAT", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{E1E8CCEA-DF7B-4898-A52E-99ABD472BF7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{7E738F61-0EFD-46BB-B40A-B8C31EA5E9D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{7E738F61-0EFD-46BB-B40A-B8C31EA5E9D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{69432436-CCCE-474E-82D5-80E0D0B35F48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{69432436-CCCE-474E-82D5-80E0D0B35F48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{ED64B14B-B3B5-4E83-96FA-C2DC9A376A5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{69432436-CCCE-474E-82D5-80E0D0B35F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69432436-CCCE-474E-82D5-80E0D0B35F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69432436-CCCE-474E-82D5-80E0D0B35F48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED64B14B-B3B5-4E83-96FA-C2DC9A376A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED64B14B-B3B5-4E83-96FA-C2DC9A376A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED64B14B-B3B5-4E83-96FA-C2DC9A376A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED64B14B-B3B5-4E83-96FA-C2DC9A376A5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
