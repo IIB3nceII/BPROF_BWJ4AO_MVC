@@ -9,10 +9,10 @@ namespace Repository
       {
             void AddNewItem(T item);
             void Delete(T item);
-            void Delete(int number);
-            T FindOne(int number);
+            void Delete(string st);
+            T FindOne(string st);
             IQueryable<T> ListAll();
-            void UpdateData(int number, T item);
+            void UpdateData(string st, T item);
             void SaveAll();
       }
 }
