@@ -14,6 +14,7 @@ namespace Models
       public class Competitor
       {
             [Key]
+            public string CompetitorId { get; set; }
             [Required]
             [Range(1,200)]
             public int Number { get; set; }

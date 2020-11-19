@@ -23,15 +23,15 @@ namespace Repository
                   cont.SaveChanges();
             }
 
-            public void Delete(int number)
+            public void Delete(string st)
             {
-                  Delete(FindOne(number));
+                  Delete(FindOne(st));
             }
 
-            public Competitor FindOne(int number)
+            public Competitor FindOne(string st)
             {
                   var q = (from x in cont.Competitors
-                           where x.Number == number
+                           where x.Id == st
                            select x).FirstOrDefault();
 
                   return q;
@@ -47,9 +47,9 @@ namespace Repository
                   cont.SaveChanges();
             }
 
-            public void UpdateData(int number, Competitor comp)
+            public void UpdateData(string st, Competitor comp)
             {
-                  var oldNumber = FindOne(number);
+                  var oldNumber = FindOne(st);
 
                   oldNumber.Number = comp.Number;
                   oldNumber.Name = comp.Name;
