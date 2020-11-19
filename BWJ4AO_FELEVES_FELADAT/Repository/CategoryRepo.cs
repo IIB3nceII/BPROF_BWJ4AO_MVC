@@ -19,32 +19,41 @@ namespace Repository
 
             public void Delete(Category item)
             {
-                  throw new NotImplementedException();
+                  cont.Categories.Remove(item);
+                  SaveAll();
             }
 
             public void Delete(int number)
             {
-                  throw new NotImplementedException();
+                  Delete(FindOne(number));
             }
 
-            public Category FindOne(int number)
+            public Category FindOne(int stw)//itt nem teljesen jó az int de a compnal az kene
             {
-                  throw new NotImplementedException();
+                  var q = (from x in cont.Categories
+                           where x.StartingWeight == stw
+                           select x).FirstOrDefault();
+
+                  return q;
             }
 
             public IQueryable<Category> ListAll()
             {
-                  throw new NotImplementedException();
+                  return cont.Categories.AsQueryable();
             }
 
             public void SaveAll()
             {
-                  throw new NotImplementedException();
+                  cont.SaveChanges();
             }
 
-            public void UpdateData(int number, Category item)
+            public void UpdateData(int stw, Category item)
             {
-                  throw new NotImplementedException();
+                  var oldStW = FindOne(stw);
+                  oldStW.StartingWeight = item.StartingWeight;
+                  oldStW.MaximumWeight = item.MaximumWeight;
+
+                  cont.SaveChanges();
             }
       }
 }
