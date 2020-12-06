@@ -1,137 +1,376 @@
-﻿@import url('https://fonts.googleapis.com/css?family:200,300,400,500,600,700,800,900&display=swap');
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
 
 * {
-    box-sizing: border-box;
-    max-height: 100%;
-    max-width: 100%;
-}
-
-body {
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-family: 'Poppins',sans-serif;
+    font-size: 12px;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #C9002B;
-    transition: 0.5s;
+    padding: 5rem 0;
 }
+
+
 
 header {
-    position: absolute;
+    width: 100%;
+    height: auto;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    padding: 20px 140px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    z-index: 1000;
 }
 
-    header .logo {
-        position: relative;
-        max-width: 80px;
-    }
-
-    header ul {
-        position: relative;
-        display: flex;
-    }
-
-        header ul li {
-            list-style: none;
-        }
-
-            header ul li a {
-                display: inline-block;
-                color: #fff;
-                font-weight: 400;
-                margin-left: 40px;
-                text-decoration: none;
-            }
-
-.content {
-    position: relative;
+.container {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 98rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
-    .content .textBox {
-        position: relative;
-        max-width: 600px;
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    /*border-bottom: 1px solid rgba(255, 255, 255, .2);*/
+    transition: 0.2s;
+}
+
+.nav-brand {
+    width: 2rem;
+}
+
+    .nav-brand img {
+        min-width: 7rem;
+        height: auto;
     }
 
-        .content .textBox h2 {
-            color: #fff;
-            font-size: 4em;
-            line-height: 1.5em;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
+.menu-icons i {
+    font-size: 3.5rem;
+    color: #fafafa;
+    cursor: pointer;
+}
 
-            .content .textBox h2 span {
-                font-size: 2em;
-            }
+.close i {
+    color: #7a2424e6;
+}
 
-        .content .textBox p {
-            color: #fff;
-        }
+.nav-list {
+    width: 25rem;
+    height: 100vh;
+    background-color: #fafafa;
+    position: fixed;
+    top: 0;
+    right: -26rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*inset-inline: 1000;*/
+    transition: all 650ms ease-in-out;
+}
 
-        .content .textBox a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 20px;
-            background: #fff;
-            color: #111;
-            border-radius: 40px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-    .content .imgBox {
-        width: 600px;
-        display: flex;
-        padding-right: 50px;
-        margin-top: 50px;
-        justify-content: flex-end;
+    .nav-list.active {
+        right: 0;
     }
 
-        .content .imgBox img {
-            max-width: 260px;
-        }
-
-.thumb {
+.close {
     position: absolute;
-    left: 50%;
-    bottom: 20px;
-    transform: translate(-50%);
-    display: flex;
+    top: 1rem;
+    left: 1.5rem;
 }
 
-    .thumb li {
-        list-style: none;
-        display: inline-block;
-        margin: 0 20px;
-        cursor: pointer;
-        transition: 0.5s;
+.nav-item {
+    margin: 1.5rem 0;
+}
+
+.nav-link {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, .7);
+}
+
+
+
+
+
+
+
+.welcome {
+    width: 100%;
+    height: 80vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(122, 36, 36, 0.9) 100%), url('2020-Olympia-bg.jpg') center no-repeat fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.main-message {
+    width: 100%;
+    max-width: 50rem;
+    color: #fafafa;
+    text-transform: uppercase;
+    transform: translateY(20%);
+}
+
+    .main-message h3 {
+        font-size: 1.6rem;
     }
 
-        .thumb li:hover {
-            transform: translateY(-15px);
+    .main-message h1 {
+        font-family: 'Aldrich', sans-serif;
+        font-size: 4rem;
+        margin: 1rem 0;
+    }
+
+    .main-message p {
+        text-transform: lowercase;
+    }
+
+.discover-the-olypia {
+    padding: 0;
+}
+
+.title-heading {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10rem;
+    color: rgba(0, 0, 0, .7);
+}
+
+    .title-heading h3 {
+        font-size: 1.4rem;
+    }
+
+    .title-heading h1 {
+        font-family: 'Aldrich' sans-serif;
+        font-size: 2rem;
+        margin: .5rem 0 1rem;
+    }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); /*fraction=fr*/
+    grid-gap: 2.5rem;
+}
+
+.grid-item {
+    height: 40rem;
+    padding: 5rem;
+    color: #fafafa;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+    .grid-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, .8) 0%, rgba(122, 36, 36, 0.9) 100%);
+        z-index: -1;
+    }
+
+.mop {
+    background: url('mop01.jpg') center no-repeat;
+}
+
+.classicp {
+    background: url('classic01.jpg') center no-repeat;
+}
+
+.wmb {
+    background: url('wmbikini01.jpg') center no-repeat;
+}
+
+.mps {
+    background: url('mens01.jpg') center no-repeat;
+}
+
+.wps {
+    background: url('wmsp01.jpg') center no-repeat;
+}
+
+
+
+.mro {
+    background: url('kokeny01.jpg') center no-repeat;
+}
+
+.grid-item h1 {
+    font-family: 'Aldrich' sans-serif;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    margin: 2rem 0;
+}
+
+
+
+
+
+.competitors {
+    width: 100%;
+    height: 80vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, .8) 0%, rgba(122, 36, 36, 0.9) 100%), url('arnoldbg.jpg') center no-repeat fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.competitor {
+    width: 1000px;
+    color: #fafafa;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.competitor-text-box {
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+    .competitor-text-box i {
+        position: absolute;
+        top: -8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 8rem;
+        color: #7a2424e6;
+        opacity: .5;
+        z-index: -1;
+    }
+
+.champion-comp img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+    border: 3px solid #7a2424e6;
+}
+
+
+
+footer {
+    padding: 2.5rem 0;
+    background-color: #535353e6;
+    text-align: center;
+    color: rgba(0, 0, 0, .5);
+}
+
+
+@media screen and (min-width: 350px) {
+    .main-message {
+        transform: translateY(40%);
+    }
+}
+
+@media screen and (min-width: 700px) {
+    header {
+        height: 8rem;
+    }
+
+    .nav-brand {
+        width: 3.5rem;
+    }
+
+    .nav-list {
+        width: initial;
+        height: initial;
+        background-color: transparent;
+        position: initial;
+        top: initial;
+        right: initial;
+        flex-direction: row;
+        transition: initial;
+    }
+
+    .menu-icons {
+        display: none;
+    }
+
+    nav.item {
+        margin: 0 2.5rem;
+    }
+
+    .nav-link,
+    .current {
+        color: #fafafa;
+        position: relative;
+        font-size: 1.3rem;
+        margin-right: 5rem;
+    }
+
+        .nav-link::before,
+        .current::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -.5rem;
+            background-color: #7a2424e6;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 650ms;
         }
 
-        .thumb li img {
-            max-width: 40px;
+        .current::before {
+            transform: scaleX(1);
         }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+        }
+
+    .welcome {
+        height: 60vh;
+    }
+
+    .main-message {
+        transform: translateY(50%);
+    }
+
+    .title-heading h1 {
+        font-size: 2.5rem;
+    }
+
+
+    @media screen and (min-width: 1200px) {
+        .welcome {
+            height: 75vh;
+        }
+    }
+}

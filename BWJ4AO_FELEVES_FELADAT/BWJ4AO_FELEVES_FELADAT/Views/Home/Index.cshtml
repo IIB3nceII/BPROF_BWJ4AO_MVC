@@ -1,43 +1,151 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Mr. Olympia Welcome Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Mr. Olympia Database | Home</title>
     <link rel="stylesheet" href="~/Index.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
 </head>
 <body>
-    <section id="sec" class="sec">
-        <header id="header">
-            <a href="#"><img src="olympialogo.png" class="logo"></a>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Add</a></li>
-                <li><a href="#">Database</a></li>
-                <li><a href="#">Mr. Olympia History</a></li>
-            </ul>
-        </header>
-        <div class="content">
-            <div class="textBox">
-                <h2>Build a database&nbsp<br /><span>Together</span></h2>
-                <p>loremsafnfasgjdénasv ja vjk d jk  vma skjv  sdjv avbd f va,v bbfdh vav jbs,nbvava v</p>
-                <a href="#">View Our Database</a>
-            </div>
-            <div class="imgBox">
-                <img src="brendon01.png" class="competitor" />
-            </div>
+    <header id="header">
+        <div class="container">
+            <nav id="nav">
+                <div class="nav-brand">
+                    <a href="/Home/Index">
+                        <img src="olympialogo.png" alt="">
+                    </a>
+                </div>
+
+                <div class="menu-icons open">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+
+                <ul class="nav-list">
+                    <div class="menu-icons close">
+                        <i class="icon ion-md-close"></i>
+                    </div>
+                    <li class="nav-item">
+                        <a href="/Home/Index" class="nav-link current">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="addcategories.html" class="nav-link">Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Database</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">History</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <ul class="thumb">
-            <li><img src="brendon01.png" onclick="changePicBg('brendon01.png','#C9002B')" /></li>
-            <li><img src="chrisbumstead.png" onclick="changePicBg('chrisbumstead.png','#A9A9A9')" /></li>
-            <li><img src="rayedmonds.png" onclick="changePicBg('rayedmonds.png','#004B93')" /></li>
-            <li><img src="elisapecini.png" onclick="changePicBg('elisapecini.png','#DB7093')" /></li>
-        </ul>
-    </section>
-    <script>
-        function changePicBg(img,color) {
-    document.querySelector('.competitor').src = img;
-    document.querySelector('.sec').style.background = color;
-}
-    </script>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <div class="container">
+                <div class="main-message">
+                    <h3>Welcome to the</h3>
+                    <h1>Mr. Olympia</h1>
+                    <p>
+                        Mr. Olympia is the title awarded to the winner of the professional men's bodybuilding contest at Joe Weider's Olympia Fitness & Performance Weekend—an international bodybuilding competition that is held annually by the International Federation of BodyBuilding & Fitness (IFBB).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="discover-the-olympia">
+            <div class="container">
+                <div class="title-heading">
+                    <h3>Check</h3>
+                    <h1>The Mr. Olympia Categories</h1>
+                </div>
+
+                <div class="grid">
+                    <div class="grid-item mop">
+                        <h1>Men’s Open</h1>
+                        <p>
+                            All the top players participate here with their weights starting from 300 lbs or 137 kgs.
+                        </p>
+                    </div>
+
+                    <div class="grid-item wmb">
+                        <h1>Women's Bikini</h1>
+                        <p>
+                            The IFBB WOS Ms. Olympia is both the highest ranking professional female bodybuilding competition and the title of the winner of the competition.
+                        </p>
+                    </div>
+
+                    <div class="grid-item classicp">
+                        <h1>Classic Physique</h1>
+                        <p>
+                            This division is targeted to men who want to build their muscles and size above the normal Men’s Physique limits (discussed later), but not to the extent of Open Division Bodybuilding.
+                        </p>
+                    </div>
+
+                    <div class="grid-item mps">
+                        <h1>Men’s Physique</h1>
+                        <p>
+                            The judges pay close attention to Athletic, Less Muscularity and an Aesthetic physique.
+                        </p>
+                    </div>
+
+                    <div class="grid-item wps">
+                        <h1>Women’s Physique</h1>
+                        <p>
+                            Competitors should display a toned, athletic physique showcasing femininity, muscle tone, beauty/flow of physique.
+                        </p>
+                    </div>
+
+                    <div class="grid-item mro">
+                        <h1>Mr. Olympia</h1>
+                        <p>
+                            The requirements for this class, just as the name implies, is that the athlete needs to weigh up to and under 212 Lb (i.e., 96.6 kg).
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="competitors">
+            <div class="container">
+                <div class="competitor brendon">
+                    <div class="competitor-text-box">
+                        <i class="icon ion-md-quote"></i>
+                        <p>
+                            “Not many people understand what a pump is. It must be experienced to be understood. It is the greatest feeling that I get. I search for this pump because it means that that my muscles will grow when I get it. I get a pump when the blood is running into my muscles. They become really tight with blood. Like the skin is going to explode any minute. It’s like someone putting air in my muscles. It blows up. It feels fantastic.”
+                        </p>
+                    </div>
+                    <div class="champion-comp">
+                        <img src="ArnoldProfilePic.jpg" alt="">
+                        <h1>Arnold Schwarzenegger <br>(7 Mr Olympia wins)</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="begin-adventure">
+            <div class="container">
+                <div class="title-heading">
+                    <h3>Let the</h3>
+                    <h1>Journey Starts Today</h1>
+                    <p>
+                        The fitness industry’s most prestigious event has completed a historic move to Orlando, Florida aimed at protecting the interests of thousands of fans who were previously planning to attend Olympia Weekend in Las Vegas. Olympia Weekend will now be held in Central Florida at the Orange County Convention Center, located in the heart of Orlando. -- For all questions relating to the change of location, please visit the FAQ PAGE. We are anticipating a history-making Olympia as we celebrate the strength and resilience of the global fitness community! Select your preferred event option below to complete your purchase. Due to capacity limitations ticket supplies this year are limited.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>
+            &copy; 2020 Papp Bence
+        </p>
+    </footer>
+
+    <script type="text/javascript" src="~/Index.js"></script>
 </body>
 </html>
