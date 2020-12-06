@@ -1,1 +1,43 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Mr. Olympia Welcome Page</title>
+    <link rel="stylesheet" href="~/Index.css">
+</head>
+<body>
+    <section id="sec" class="sec">
+        <header id="header">
+            <a href="#"><img src="olympialogo.png" class="logo"></a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Add</a></li>
+                <li><a href="#">Database</a></li>
+                <li><a href="#">Mr. Olympia History</a></li>
+            </ul>
+        </header>
+        <div class="content">
+            <div class="textBox">
+                <h2>Build a database&nbsp<br /><span>Together</span></h2>
+                <p>loremsafnfasgjdénasv ja vjk d jk  vma skjv  sdjv avbd f va,v bbfdh vav jbs,nbvava v</p>
+                <a href="#">View Our Database</a>
+            </div>
+            <div class="imgBox">
+                <img src="brendon01.png" class="competitor" />
+            </div>
+        </div>
+        <ul class="thumb">
+            <li><img src="brendon01.png" onclick="changePicBg('brendon01.png','#C9002B')" /></li>
+            <li><img src="chrisbumstead.png" onclick="changePicBg('chrisbumstead.png','#A9A9A9')" /></li>
+            <li><img src="rayedmonds.png" onclick="changePicBg('rayedmonds.png','#004B93')" /></li>
+            <li><img src="elisapecini.png" onclick="changePicBg('elisapecini.png','#DB7093')" /></li>
+        </ul>
+    </section>
+    <script>
+        function changePicBg(img,color) {
+    document.querySelector('.competitor').src = img;
+    document.querySelector('.sec').style.background = color;
+}
+    </script>
+</body>
+</html>

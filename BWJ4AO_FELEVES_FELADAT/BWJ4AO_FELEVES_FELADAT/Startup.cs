@@ -16,7 +16,7 @@ namespace BWJ4AO_FELEVES_FELADAT
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
             public void ConfigureServices(IServiceCollection services)
             {
-                  services.AddMvc(opt=>opt.EnableEndpointRouting=false);
+                  services.AddMvc(opt=>opt.EnableEndpointRouting=false).AddRazorRuntimeCompilation();
             }
 
             // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,8 +27,11 @@ namespace BWJ4AO_FELEVES_FELADAT
                         app.UseDeveloperExceptionPage();
                   }
 
-                  app.UseMvcWithDefaultRoute();
                   app.UseRouting();
+
+                  app.UseStaticFiles();
+
+                  app.UseMvcWithDefaultRoute();
             }
       }
 }
