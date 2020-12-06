@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Logic
 {
-      class CategoryLogic
+      public class CategoryLogic
       {
             IRepository<Competitor> comprepo;
             IRepository<Category> categrepo;

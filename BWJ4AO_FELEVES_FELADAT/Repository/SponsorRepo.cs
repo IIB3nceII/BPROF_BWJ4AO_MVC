@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Repository
 {
-      class SponsorRepo : IRepository<Sponsor>
+      public class SponsorRepo : IRepository<Sponsor>
       {
             CompetitorDbContext cont = new CompetitorDbContext();
 
