@@ -12,9 +12,9 @@ window.onscroll = function () { scroll() };
 
 function scroll() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("nav").style.backgroundColor = "#00000066";
-        document.getElementById("nav").style.borderRadius = "30px";
+        document.getElementById("header").style.backgroundColor = " #000000b3";
+        //document.getElementById("header").style.borderRadius="30px";
     } else {
-        document.getElementById('nav').style.removeProperty("background-color");
+        document.getElementById('header').style.removeProperty("background-color");
     }
 }
