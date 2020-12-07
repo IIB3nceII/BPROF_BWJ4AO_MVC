@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/AddCompetitor.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+    <title>Add | Competitor</title>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav id="nav">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="~/olympialogo.png" alt="">
+                    </a>
+                </div>
+
+                <div class="menu-icons open">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+
+                <ul class="nav-list">
+                    <div class="menu-icons close">
+                        <i class="icon ion-md-close"></i>
+                    </div>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link current">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="addcategories.html" class="nav-link">Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Database</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">History</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ---------------------------------------------------- -->
+    <div class="contentContainer">
+        <h1>Add Competitor</h1>
+        <div class="progress-bar">
+            <div class="step">
+                <p>Name</p>
+                <div class="bullet">
+                    <span>1</span>
+                    <div class="check icon ion-md-checkmark"></div>
+                </div>
+            </div>
+            <div class="step">
+                <p>Basics</p>
+                <div class="bullet">
+                    <span>2</span>
+                    <div class="check icon ion-md-checkmark"></div>
+                </div>
+            </div>
+            <div class="step">
+                <p>Details</p>
+                <div class="bullet">
+                    <span>3</span>
+                    <div class="check icon ion-md-checkmark"></div>
+                </div>
+            </div>
+            <div class="step">
+                <p>Submit</p>
+                <div class="bullet">
+                    <span>4</span>
+                    <div class="check icon ion-md-checkmark"></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-outer">
+            <form action="/Home/AddCompetitor" method="POST">
+                <div class="page slidepage">
+                    <div class="title">Basic Info</div>
+                    <div class="field">
+                        <div class="label">Number</div>
+                        <input type="text">
+                    </div>
+                    <div class="field">
+                        <div class="label">Name</div>
+                        <input type="text">
+                    </div>
+                    <div class="field nextBtn">
+                        <button type="button"><b> Next</b></button>
+                    </div>
+                </div>
+                <!-- ----------------------------------------------------------------- -->
+                <div class="page">
+                    <div class="title">Basic Info</div>
+                    <div class="field">
+                        <div class="label">Nationality</div>
+                        <input type="text">
+                    </div>
+                    <div class="field">
+                        <div class="label">Gender</div>
+                        <select>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="field btns">
+                        <button type="button" class="prev-1 prev"><b>Previous</b></button>
+                        <button type="button" class="next-1 next"><b>Next</b></button>
+                    </div>
+                </div>
+                <!-- ----------------------------------------------------------------- -->
+                <div class="page">
+                    <div class="title">Basic Info</div>
+                    <div class="field">
+                        <div class="label">Height</div>
+                        <input type="number">
+                    </div>
+                    <div class="field">
+                        <div class="label">Weight</div>
+                        <input type="number">
+                    </div>
+                    <div class="field">
+                        <div class="label">Achived Place</div>
+                        <input type="number">
+                    </div>
+                    <div class="field btns">
+                        <button type="button" class="prev-2 prev"><b>Previous</b></button>
+                        <button type="button" class="next-2 next"><b>Next</b></button>
+                    </div>
+                </div>
+                <!-- ----------------------------------------------------------------- -->
+                <div class="page">
+                    <div class="title">Basic Info</div>
+                    <div class="field">
+                        <div class="label">Category</div>
+                        <input type="text">
+                    </div>
+                    <div class="field">
+                        <div class="label">Sponsor</div>
+                        <input type="text">
+                    </div>
+                    <div class="field btns">
+                        <button class="submit" type="submit"><b>Add</b></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/AddCompetitor.js"></script>
+</body>
+</html>

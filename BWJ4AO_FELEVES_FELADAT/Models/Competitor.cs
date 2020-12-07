@@ -15,17 +15,12 @@ namespace Models
       {
             [Key]
             public string CompetitorId { get; set; }
-            [Required]
             [Range(1,200)]
             public int Number { get; set; }
-            [Required]
             public string Name { get; set; }
-            [Required]
             public string Nationality { get; set; }
-            [Required]
             public GenderType Gender { get; set; }
             public double Height { get; set; }
-            [Required]
             [Range(50,150)]
             public double Weight { get; set; }
             [Range(1,30)]

@@ -26,12 +26,29 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   return View();
             }
 
-            public IActionResult Add()
+            [HttpGet]
+            public IActionResult ChooseCategory()
             {
                   return View();
             }
 
-            public IActionResult Data()
+            [HttpGet]
+            public IActionResult AddCompetitor()
+            {
+                  return View();
+            }
+
+            [HttpPost]
+            public IActionResult AddCompetitor(Competitor c)
+            {
+                  c.CompetitorId = Guid.NewGuid().ToString();
+                  competitorlogic.Add(c);
+
+                  return RedirectToAction(nameof(ListCompetitor));
+            }
+
+            [HttpGet]
+            public IActionResult ListCompetitor()
             {
                   return View();
             }
