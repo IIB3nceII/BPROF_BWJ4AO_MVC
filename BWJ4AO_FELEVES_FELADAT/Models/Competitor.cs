@@ -28,9 +28,9 @@ namespace Models
             [NotMapped]
             public virtual Category Category { get; set; }
             [NotMapped]
-            public virtual Sponsor Sponsor { get; set; }
+            public virtual ICollection<Sponsor> Sponsors { get; set; }
             public string CategoryId { get; set; }
-            public string SponsorId { get; set; }
+
       }
 }
 

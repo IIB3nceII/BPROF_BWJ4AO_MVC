@@ -14,6 +14,7 @@ namespace Repository
             public void AddNewItem(Sponsor item)
             {
                   cont.Sponsors.Add(item);
+                  SaveAll();
             }
 
             public void Delete(Sponsor item)
@@ -53,10 +54,6 @@ namespace Repository
                   oldSponsor.Nationality = item.Nationality;
                   oldSponsor.Placeholder = item.Placeholder;
                   oldSponsor.Type = item.Type;
-                  foreach (var competitor in item.Competitors)
-                  {
-                        oldSponsor.Competitors.Add(competitor);
-                  }
 
                   cont.SaveChanges();
 

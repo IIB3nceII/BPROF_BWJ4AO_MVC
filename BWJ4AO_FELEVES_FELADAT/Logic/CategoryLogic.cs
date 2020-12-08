@@ -34,6 +34,7 @@ namespace Logic
             {
                   return categrepo.ListAll();
             }
+            
 
             public Category Find(string id)
             {
@@ -43,6 +44,11 @@ namespace Logic
             public void Update(string id, Category c)
             {
                   categrepo.UpdateData(id, c);
+            }
+
+            public IQueryable<Competitor> ListByCategory(string id)
+            {
+                  return categrepo.FindOne(id).Competitors.AsQueryable();
             }
       }
 }

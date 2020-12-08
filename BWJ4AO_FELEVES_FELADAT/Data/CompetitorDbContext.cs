@@ -42,12 +42,12 @@ namespace Data
                         .WithMany(Category => Category.Competitors)
                         .HasForeignKey(Competitor => Competitor.CategoryId);
                   });
-                  modelbuilder.Entity<Competitor>(entity =>
+                  modelbuilder.Entity<Sponsor>(entity =>
                   {
                         entity
-                        .HasOne(Competitor => Competitor.Sponsor)
-                        .WithMany(Sponsor => Sponsor.Competitors)
-                        .HasForeignKey(Competitor => Competitor.SponsorId);
+                        .HasOne(Sponsor => Sponsor.Competitor)
+                        .WithMany(Competitor => Competitor.Sponsors)
+                        .HasForeignKey(Sponsor => Sponsor.CompetitorId);
                   });
             }
 

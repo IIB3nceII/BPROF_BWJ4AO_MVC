@@ -63,10 +63,10 @@ submitBtn.addEventListener("click", function () {
     progressText[current - 1].classList.add("active");
     progressCheck[current - 1].classList.add("active");
     current += 1;
-    setTimeout(function () {
+    /*setTimeout(function () {
         alert("Competitor added");
         location.reload();
-    }, 800);
+    }, 800);*/
 });
 
 prevBtnSec.addEventListener("click", function () {

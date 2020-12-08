@@ -31,26 +31,72 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             {
                   return View();
             }
-
+            /*-----------------------------------------------------------------------------*/
             [HttpGet]
-            public IActionResult AddCompetitor()
+            public IActionResult AddCategory()
             {
                   return View();
             }
 
             [HttpPost]
-            public IActionResult AddCompetitor(Competitor c)
+            public IActionResult AddCategory(Category c)
             {
-                  c.CompetitorId = Guid.NewGuid().ToString();
-                  competitorlogic.Add(c);
+                  c.CategoryId = Guid.NewGuid().ToString();
+                  categorylogic.Add(c);
 
-                  return RedirectToAction(nameof(ListCompetitor));
+                  return RedirectToAction(nameof(ListCategories));
             }
 
             [HttpGet]
-            public IActionResult ListCompetitor()
+            public IActionResult ListCategories()
             {
-                  return View();
+                  return View(categorylogic.List());
+            }
+
+            [HttpGet]
+            public IActionResult ListByCategory(string cid)
+            {
+                  return View(nameof(ListCategories), categorylogic.ListByCategory(cid));
+            }
+
+            [HttpGet]
+            public IActionResult EditCategory(string cid)
+            {
+                  return View(nameof(EditCategory), categorylogic.List());
+            }
+
+            [HttpPost]
+            public IActionResult EditCategory(Category c)
+            {
+                  categorylogic.Update(c.CategoryId, c);
+
+                  return View(nameof(EditCategory), categorylogic.List());
+            }
+
+
+
+            /*------------------------------------------------------------------------*/
+
+            [HttpGet]
+            public IActionResult AddCompetitor(string id)
+            {
+                  return View(nameof(AddCompetitor),id);
+            }
+
+            [HttpPost]
+            public IActionResult AddCompetitor(Competitor c)
+            {
+                  ;
+                  c.CompetitorId = Guid.NewGuid().ToString();
+                  competitorlogic.Add(c);
+
+                  return View(nameof(ListCompetitors),categorylogic.ListByCategory(c.CategoryId));
+            }
+
+            [HttpGet]
+            public IActionResult ListCompetitors()
+            {
+                  return View(competitorlogic.List());
             }
       }
 }

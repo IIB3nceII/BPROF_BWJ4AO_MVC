@@ -51,13 +51,7 @@ namespace Repository
             {
                   var oldCategory = FindOne(st);
                   oldCategory.Name = item.Name;
-                  oldCategory.StartingWeight = item.StartingWeight;
-                  oldCategory.MaximumWeight = item.MaximumWeight;
-                  oldCategory.Competitors.Clear();
-                  foreach (var competitor in item.Competitors)
-                  {
-                        oldCategory.Competitors.Add(competitor);
-                  }
+
 
                   cont.SaveChanges();
             }

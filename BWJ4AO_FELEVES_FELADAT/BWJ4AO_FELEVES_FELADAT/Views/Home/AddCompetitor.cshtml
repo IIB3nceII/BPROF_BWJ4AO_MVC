@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model string
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -75,12 +77,12 @@
             </div>
         </div>
         <div class="form-outer">
-            <form action="/Home/AddCompetitor" method="POST">
+            <form action="/Home/AddCompetitor" method="post">
                 <div class="page slidepage">
                     <div class="title">Basic Info</div>
                     <div class="field">
                         <div class="label">Number</div>
-                        <input type="text">
+                        <input type="number">
                     </div>
                     <div class="field">
                         <div class="label">Name</div>
@@ -100,9 +102,9 @@
                     <div class="field">
                         <div class="label">Gender</div>
                         <select>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div class="field btns">
@@ -121,10 +123,7 @@
                         <div class="label">Weight</div>
                         <input type="number">
                     </div>
-                    <div class="field">
-                        <div class="label">Achived Place</div>
-                        <input type="number">
-                    </div>
+
                     <div class="field btns">
                         <button type="button" class="prev-2 prev"><b>Previous</b></button>
                         <button type="button" class="next-2 next"><b>Next</b></button>
@@ -132,15 +131,11 @@
                 </div>
                 <!-- ----------------------------------------------------------------- -->
                 <div class="page">
-                    <div class="title">Basic Info</div>
                     <div class="field">
-                        <div class="label">Category</div>
-                        <input type="text">
+                        <div class="label">Achived Place</div>
+                        <input type="number">
                     </div>
-                    <div class="field">
-                        <div class="label">Sponsor</div>
-                        <input type="text">
-                    </div>
+                    <input type="hidden" name="CategoryId" value="@Model" />
                     <div class="field btns">
                         <button class="submit" type="submit"><b>Add</b></button>
                     </div>
@@ -150,5 +145,6 @@
     </div>
 
     <script src="~/AddCompetitor.js"></script>
+
 </body>
 </html>

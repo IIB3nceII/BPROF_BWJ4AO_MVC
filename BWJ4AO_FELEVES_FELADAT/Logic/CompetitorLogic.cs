@@ -42,5 +42,14 @@ namespace Logic
             {
                   comprepo.UpdateData(id, c);
             }
+
+            public IQueryable<Competitor> ListByCategory(string id)
+            {
+                  var q = from x in comprepo.ListAll()
+                          where x.CategoryId == id
+                          select x;
+
+                  return q.AsQueryable();
+            }
       }
 }

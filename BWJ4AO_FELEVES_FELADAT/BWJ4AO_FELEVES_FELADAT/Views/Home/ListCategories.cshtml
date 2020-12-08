@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Models.Category>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListCategories</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartingWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaximumWeight)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartingWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaximumWeight)
+            </td>
+            <td>
+                <a href="/Home/AddCompetitor?id=@item.CategoryId">Add New Competitor</a>
+                <br />
+                <a href="/Home/ListCompetitors?id=@item.CategoryId">List Competitors</a>
+                <br />
+                <a href="/Home/EditCompetitor?id=@item.CategoryId">Edit Competitor</a>
+                <br />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

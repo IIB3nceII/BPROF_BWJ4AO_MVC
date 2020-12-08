@@ -44,5 +44,14 @@ namespace Logic
             {
                   sponsrepo.UpdateData(id, s);
             }
+
+            public IQueryable<Sponsor> ListByCompetitor(string id)
+            {
+                  var q = from x in sponsrepo.ListAll()
+                          where x.CompetitorId == id
+                          select x;
+
+                  return q.AsQueryable();
+            }
       }
 }

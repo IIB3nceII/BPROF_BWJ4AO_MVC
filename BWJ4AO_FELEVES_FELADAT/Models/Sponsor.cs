@@ -13,8 +13,7 @@ namespace Models
             public string Nationality { get; set; }
             public string Placeholder { get; set; }
             public string Type { get; set; }
-            public virtual ICollection<Competitor> Competitors { get; set; }
-
-
+            public string CompetitorId { get; set; }
+            public virtual Competitor Competitor { get; set; }
       }
 }

@@ -1,0 +1,34 @@
+﻿@model string
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/Home/AddCompetitor2" method="post">
+        Number
+        <input type="number" name="Number" />
+        Name
+        <input type="text" name="Name" />
+        Nationality
+        <input type="text" name="Nationality" />
+        Gender
+        <select>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        Height
+        <input type="number" name="Height" />
+        Weight
+        <input type="number" name="Weight" />
+        Achived Place
+        <input type="text" name="AchivedPlace" />
+        <input type="hidden" name="CategoryId" value="@Model"/>
+        <input type="submit" name="Submit" />
+    </form>
+</body>
+</html>
