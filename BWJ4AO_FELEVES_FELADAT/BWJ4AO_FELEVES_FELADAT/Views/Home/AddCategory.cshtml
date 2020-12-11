@@ -3,22 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/AddCategory.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
     <title>Add | Category</title>
 </head>
 <body>
-    <form action="/Home/AddCategory" method="post">
-        Name
-        <select>
-            <option value="MrOlympia">mr o</option>
-            <option value="ClassicPhysique">c q</option>
-            <option value="MensPhysique">mens</option>
-            <option value="WomensBikini">wm bikini</option>
-        </select>
-        Satring W
-        <input type="number" name="StartinWeight" />
-        Max W
-        <input type="number" name="MaximumWeight" />
-        <input type="submit" value="Add" />
-    </form>
+    <header id="header">
+        <div class="container">
+            <nav id="nav">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="images/olympialogo.png" alt="">
+                    </a>
+                </div>
+
+                <div class="menu-icons open">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+
+                <ul class="nav-list">
+                    <div class="menu-icons close">
+                        <i class="icon ion-md-close"></i>
+                    </div>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link current">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="addcategories.html" class="nav-link">Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Database</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">History</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ------------------------------------------------------------------ -->
+    <div class="contentContainer">
+        <h1>Add Category</h1>
+        <div class="form-outer">
+            <form action="/Home/AddCategory" method="post">
+                <div class="page">
+                    <div class="title">Basic Info</div>
+                    <div class="field">
+                        <div class="label">Name</div>
+                        <select>
+                            <option value="MrOlympia">Mr. Olympia</option>
+                            <option value="ClassicPhysique">Classic</option>
+                            <option value="MensPhysique">Mens Physique</option>
+                            <option value="WomensBikini">Womens Bikini</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Starting Weight</div>
+                        <input type="number" name="StartinWeight" />
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Maximum Weight</div>
+                        <input type="number" name="MaximumWeight" />
+                    </div>
+                    <div class="field btns">
+                        <button class="submit"><b>Submit</b></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="~/AddCategory.js"></script>
 </body>
 </html>

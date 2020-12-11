@@ -1,0 +1,274 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    /*outline: none;*/
+    box-sizing: inherit;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, .7);
+}
+
+
+
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/*NAV BAR*/
+
+header {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.container {
+    width: 100%;
+    max-width: 98rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    /*border-bottom: 1px solid rgba(255, 255, 255, .2);*/
+    transition: 0.2s;
+}
+
+.nav-brand {
+    width: 2rem;
+}
+
+    .nav-brand img {
+        min-width: 7rem;
+        height: auto;
+    }
+
+.menu-icons i {
+    font-size: 3.5rem;
+    color: #fafafa;
+    cursor: pointer;
+}
+
+.close i {
+    color: #7a2424e6;
+}
+
+.nav-list {
+    width: 25rem;
+    height: 100vh;
+    background-color: #fafafa;
+    position: fixed;
+    top: 0;
+    right: -26rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    inset-inline: 1000;
+    transition: all 650ms ease-in-out;
+}
+
+    .nav-list.active {
+        right: 0;
+    }
+
+.close {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+}
+
+.nav-item {
+    margin: 1.5rem 0;
+}
+
+.nav-link {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, .7);
+}
+
+/*CONTENT*/
+
+.contentContainer {
+    width: 330px;
+    background: #fafafa;
+    border-radius: 5px;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding: 50px, 35px, 10px, 35px;
+}
+
+    .contentContainer h1 {
+        font-size: 35px;
+        font-weight: 600;
+        margin: 0 0 30px 0;
+    }
+
+    .contentContainer .form-outer {
+        width: 100%;
+        overflow: hidden;
+    }
+
+.form-outer form {
+    display: flex;
+    width: 400%;
+}
+
+    .form-outer form .page {
+        width: 25%;
+        transition: margin-left 200ms ease-in-out;
+    }
+
+        .form-outer form .page .title {
+            text-align: left;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .form-outer form .page .field {
+            height: 45px;
+            width: 330px;
+            margin: 45px 0;
+            display: flex;
+            position: relative;
+        }
+
+            .form-outer form .page .field .label {
+                position: absolute;
+                top: -30px;
+                font-weight: 500;
+            }
+
+            .form-outer form .page .field input {
+                height: 100%;
+                width: 100%;
+                border: 1px solid lightgray;
+                border-radius: 5px;
+                font-size: 18px;
+                padding-left: 15px;
+            }
+
+form .page .field select {
+    width: 100%;
+    padding-left: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.form-outer form .page .field button {
+    width: 100%;
+    height: calc(100%+5px);
+    margin-top: -20px;
+    border: 5px solid #fafafa;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(122, 36, 36, 0.9) 100%);
+    border-radius: 20px;
+    color: #fafafa;
+    font-size: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+    .form-outer form .page .field button:hover {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(122, 36, 36, 1) 100%);
+    }
+
+.form-outer form .page .btns button {
+    margin-top: -20px;
+}
+
+
+
+@media screen and (min-width: 700px) {
+    header {
+        height: 8rem;
+    }
+
+    .nav-brand {
+        width: 3.5rem;
+    }
+
+    .nav-list {
+        width: initial;
+        height: initial;
+        background-color: transparent;
+        position: initial;
+        top: initial;
+        right: initial;
+        flex-direction: row;
+        transition: initial;
+    }
+
+    .menu-icons {
+        display: none;
+    }
+
+    nav.item {
+        margin: 0 2.5rem;
+    }
+
+    .nav-link,
+    .current {
+        color: #fafafa;
+        position: relative;
+        font-size: 1.3rem;
+        margin-right: 5rem;
+    }
+
+        .nav-link::before,
+        .current::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -.5rem;
+            background-color: #7a2424e6;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 650ms;
+        }
+
+        .current::before {
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+        }
+}
