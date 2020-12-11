@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addsponsor.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+    <title>Add | Sponsor</title>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav id="nav">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="images/olympialogo.png" alt="">
+                    </a>
+                </div>
+
+                <div class="menu-icons open">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+
+                <ul class="nav-list">
+                    <div class="menu-icons close">
+                        <i class="icon ion-md-close"></i>
+                    </div>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link current">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="addcategories.html" class="nav-link">Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Database</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">History</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ------------------------------------------------------------------ -->
+    <div class="contentContainer">
+        <h1>Add Sponsor</h1>
+        <div class="form-outer">
+            <form action="/Home/AddSponsor" method="post">
+                <div class="page">
+                    <div class="title">Basic Info</div>
+                    <div class="field">
+                        <div class="label">Name</div>
+                        <input type="text" name="Name" />
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Nationality</div>
+                        <input type="text" name="Nationality" />
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Placeholder</div>
+                        <input type="text" name="Placeholder" />
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Type</div>
+                        <input type="text" name="Placeholder" />
+                    </div>
+
+                    <div class="field btns">
+                        <button class="submit"><b>Submit</b></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="addsponsor.js"></script>
+</body>
+</html>
