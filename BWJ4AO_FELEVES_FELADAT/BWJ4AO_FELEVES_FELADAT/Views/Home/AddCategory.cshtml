@@ -13,7 +13,7 @@
             <nav id="nav">
                 <div class="nav-brand">
                     <a href="index.html">
-                        <img src="images/olympialogo.png" alt="">
+                        <img src="~/olympialogo.png" alt="">
                     </a>
                 </div>
 
@@ -26,16 +26,13 @@
                         <i class="icon ion-md-close"></i>
                     </div>
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link current">Home</a>
+                        <a href="~/Home/Index" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="addcategories.html" class="nav-link">Add</a>
+                        <a href="#" class="nav-link current">Database</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Database</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">History</a>
+                        <a href="~/Home/History" class="nav-link">History</a>
                     </li>
                 </ul>
             </nav>
@@ -50,7 +47,7 @@
                     <div class="title">Basic Info</div>
                     <div class="field">
                         <div class="label">Name</div>
-                        <select>
+                        <select name="Name">
                             <option value="MrOlympia">Mr. Olympia</option>
                             <option value="ClassicPhysique">Classic</option>
                             <option value="MensPhysique">Mens Physique</option>
@@ -60,7 +57,7 @@
 
                     <div class="field">
                         <div class="label">Starting Weight</div>
-                        <input type="number" name="StartinWeight" />
+                        <input type="number" name="StartingWeight" />
                     </div>
 
                     <div class="field">

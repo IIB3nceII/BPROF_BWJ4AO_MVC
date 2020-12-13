@@ -28,16 +28,13 @@
                         <i class="icon ion-md-close"></i>
                     </div>
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link current">Home</a>
+                        <a href="~/Home/Index" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="addcategories.html" class="nav-link">Add</a>
+                        <a href="#" class="nav-link current" >Database</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Database</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">History</a>
+                        <a href="~/Home/History" class="nav-link">History</a>
                     </li>
                 </ul>
             </nav>
@@ -76,32 +73,33 @@
                 </div>
             </div>
         </div>
+        <!-- ----------------------------------------------------------------- -->
         <div class="form-outer">
             <form action="/Home/AddCompetitor" method="post">
                 <div class="page slidepage">
                     <div class="title">Basic Info</div>
                     <div class="field">
                         <div class="label">Number</div>
-                        <input type="number">
+                        <input type="number" name="Number">
                     </div>
                     <div class="field">
                         <div class="label">Name</div>
-                        <input type="text">
+                        <input type="text" name="Name">
                     </div>
                     <div class="field nextBtn">
                         <button type="button"><b> Next</b></button>
                     </div>
                 </div>
-                <!-- ----------------------------------------------------------------- -->
+
                 <div class="page">
                     <div class="title">Basic Info</div>
                     <div class="field">
                         <div class="label">Nationality</div>
-                        <input type="text">
+                        <input type="text" name="Nationality">
                     </div>
                     <div class="field">
                         <div class="label">Gender</div>
-                        <select>
+                        <select name="Gender">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
@@ -117,11 +115,11 @@
                     <div class="title">Basic Info</div>
                     <div class="field">
                         <div class="label">Height</div>
-                        <input type="number">
+                        <input type="number" name="Height">
                     </div>
                     <div class="field">
                         <div class="label">Weight</div>
-                        <input type="number">
+                        <input type="number" name="Weight">
                     </div>
 
                     <div class="field btns">
@@ -133,7 +131,7 @@
                 <div class="page">
                     <div class="field">
                         <div class="label">Achived Place</div>
-                        <input type="number">
+                        <input type="number" name="AchivedPlace">
                     </div>
                     <input type="hidden" name="CategoryId" value="@Model" />
                     <div class="field btns">

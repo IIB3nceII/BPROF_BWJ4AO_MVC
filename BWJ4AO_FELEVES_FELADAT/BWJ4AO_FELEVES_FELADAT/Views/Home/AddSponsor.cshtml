@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model string
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="addsponsor.css">
+    <link rel="stylesheet" href="~/AddCategory.css">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
     <title>Add | Sponsor</title>
 </head>
@@ -13,7 +15,7 @@
             <nav id="nav">
                 <div class="nav-brand">
                     <a href="index.html">
-                        <img src="images/olympialogo.png" alt="">
+                        <img src="~/olympialogo.png" alt="">
                     </a>
                 </div>
 
@@ -26,16 +28,13 @@
                         <i class="icon ion-md-close"></i>
                     </div>
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link current">Home</a>
+                        <a href="~/Home/Index" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="addcategories.html" class="nav-link">Add</a>
+                        <a href="#" class="nav-link current">Database</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Database</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">History</a>
+                        <a href="~/Home/History" class="nav-link">History</a>
                     </li>
                 </ul>
             </nav>
@@ -67,7 +66,7 @@
                         <div class="label">Type</div>
                         <input type="text" name="Placeholder" />
                     </div>
-
+                    <input type="hidden" name="CompetitorId" value="@Model" />
                     <div class="field btns">
                         <button class="submit"><b>Submit</b></button>
                     </div>
@@ -78,6 +77,6 @@
 
 
 
-    <script src="addsponsor.js"></script>
+    <script src="~/AddCategory.js"></script>
 </body>
 </html>

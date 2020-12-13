@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.Competitor>
+﻿@model IEnumerable<Models.Sponsor>
 
 @{
     Layout = null;
@@ -10,7 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Lists.css" rel="stylesheet" />
-    <title>ListCompetitors</title>
+    <title>ListSponsors</title>
 </head>
 <body>
     <header id="header">
@@ -43,13 +43,10 @@
             </nav>
         </div>
     </header>
-    <!-- -------------------------------------------------------------------- -->
+    <!-- ----------------------------------------------------------------------- -->
     <table class="table">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Number)
-                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
@@ -57,19 +54,13 @@
                     @Html.DisplayNameFor(model => model.Nationality)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Gender)
+                    @Html.DisplayNameFor(model => model.Placeholder)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Height)
+                    @Html.DisplayNameFor(model => model.Type)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Weight)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AchivedPlace)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CategoryId)
+                    @Html.DisplayNameFor(model => model.CompetitorId)
                 </th>
                 <th></th>
             </tr>
@@ -79,36 +70,22 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Number)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Nationality)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Gender)
+                        @Html.DisplayFor(modelItem => item.Placeholder)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Height)
+                        @Html.DisplayFor(modelItem => item.Type)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Weight)
+                        @Html.DisplayFor(modelItem => item.CompetitorId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AchivedPlace)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CategoryId)
-                    </td>
-                    <td>
-                        <a href="/Home/AddSponsor?id=@item.CompetitorId">Add New Sponsor</a>
-                        <br />
-                        <a href="/Home/ListSponsors?id=@item.CompetitorId">List Sponsors</a>
-                        <br />
-                        <a href="/Home/EditCompetitor?id=@item.CompetitorId">Edit Competitor</a>
-                        <br />
+                        <a href="/Home/EditSponsor?id=@item.SponsorId">Edit Sponsor</a>
                     </td>
                 </tr>
             }

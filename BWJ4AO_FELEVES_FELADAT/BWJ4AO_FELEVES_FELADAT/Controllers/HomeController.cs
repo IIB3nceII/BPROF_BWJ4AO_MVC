@@ -27,7 +27,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             }
 
             [HttpGet]
-            public IActionResult ChooseCategory()
+            public IActionResult History()
             {
                   return View();
             }
@@ -86,7 +86,6 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             [HttpPost]
             public IActionResult AddCompetitor(Competitor c)
             {
-                  ;
                   c.CompetitorId = Guid.NewGuid().ToString();
                   competitorlogic.Add(c);
 
@@ -97,6 +96,29 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             public IActionResult ListCompetitors()
             {
                   return View(competitorlogic.List());
+            }
+
+            /*------------------------------------------------------------------------*/
+
+            [HttpGet]
+            public IActionResult AddSponsor(string id)
+            {
+                  return View(nameof(AddSponsor), id);
+            }
+
+            [HttpPost]
+            public IActionResult AddSponsor(Sponsor s)
+            {
+                  s.SponsorId = Guid.NewGuid().ToString();
+                  sponsorlogic.Add(s);
+
+                  return View(nameof(ListSponsors), sponsorlogic.ListByCompetitor(s.SponsorId));
+            }
+
+            [HttpGet]
+            public IActionResult ListSponsors()
+            {
+                  return View(sponsorlogic.List());
             }
       }
 }
