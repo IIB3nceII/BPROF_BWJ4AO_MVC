@@ -1,0 +1,34 @@
+﻿@using Models
+@model Competitor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="~/AddCategory.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+    <title>Edit | Category</title>
+</head>
+<body>
+    <form action="/Home/EditCompetitor" method="post">
+        <input type="hidden" name="CategoryId" value="@Model.CompetitorId" />
+        <input type="hidden" name="Name" value="@Model.CategoryId" />
+        <input type="hidden" name="Gender" value="@Model.Gender" />
+        <p>Number</p><br />
+        <input type="number" name="Number" value="@Model.Number" />
+        <p>Name</p><br />
+        <input type="text" name="Name" value="@Model.Name" />
+        <p>Nationality</p><br />
+        <input type="text" name="Nationality" value="@Model.Nationality" />
+        <p>Height</p><br />
+        <input type="number" name="Height" value="@Model.Height" />
+        <p>Weight</p><br />
+        <input type="number" name="Weight" value="@Model.Weight" />
+        <p>Achived Place</p><br />
+        <input type="number" name="AchivedPlace" value="@Model.AchivedPlace" />
+
+        <input type="submit" value="Edit" />
+    </form>
+</body>
+</html>

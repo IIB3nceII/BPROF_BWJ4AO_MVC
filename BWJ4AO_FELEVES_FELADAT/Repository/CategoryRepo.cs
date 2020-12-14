@@ -50,7 +50,6 @@ namespace Repository
             public void UpdateData(string st, Category item)
             {
                   var oldCategory = FindOne(st);
-                  oldCategory.Name = item.Name;
                   oldCategory.StartingWeight = item.StartingWeight;
                   oldCategory.MaximumWeight = item.MaximumWeight;
 

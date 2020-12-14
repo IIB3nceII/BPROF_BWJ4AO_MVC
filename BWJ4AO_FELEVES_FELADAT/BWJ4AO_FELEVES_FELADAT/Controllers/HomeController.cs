@@ -54,15 +54,15 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             }
 
             [HttpGet]
-            public IActionResult ListByCategory(string cid)
+            public IActionResult ListByCategory(string id)
             {
-                  return View(nameof(ListCategories), categorylogic.ListByCategory(cid));
+                  return View(nameof(ListCategories), categorylogic.ListByCategory(id));
             }
 
             [HttpGet]
-            public IActionResult EditCategory(string cid)
+            public IActionResult EditCategory(string id)
             {
-                  return View(nameof(EditCategory),categorylogic.Find(cid));
+                  return View(nameof(EditCategory),categorylogic.Find(id));
             }
 
             [HttpPost]
@@ -105,12 +105,18 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   return View(competitorlogic.List());
             }
 
+            [HttpGet]
+            public IActionResult EditCompetitor(string id)
+            {
+                  return View(nameof(EditCompetitor), competitorlogic.Find(id));
+            }
+
             [HttpPost]
             public IActionResult EditCompetitor(Competitor c)
             {
                   competitorlogic.Update(c.CompetitorId, c);
 
-                  return View(nameof(EditCompetitor), competitorlogic.ListByCategory(c.CompetitorId));
+                  return View(nameof(ListCompetitors), competitorlogic.List());
             }
 
             public IActionResult DeleteCompetitor(string id)
@@ -219,19 +225,42 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             {
                   Stat s = new Stat();
 
-                  var q = (from x in competitorlogic.List()
-                           select x.Weight).Average();
-                  s.AvgWeight = q;
+                  var q = (from x in categorylogic.List().ToList()
+                           join k in competitorlogic.List().ToList()
+                           on x.CategoryId equals k.CategoryId
+                           group x by x.Name into g
+                           select new
+                           {
+                                 _NAME = g.Key,
+                                 _AVG = g.SelectMany(x => x.Competitors).Distinct().Average(k => k.Weight)
+                           }).OrderByDescending(x => x._AVG).FirstOrDefault();
 
-                  Competitor c = new Competitor();
-                  var msc= (from x in competitorlogic.List()
-                            select x).OrderByDescending(x => x.Sponsors.Count()).FirstOrDefault();
-                  s.MostPopularCompetitor = msc.Name;
+                  s.BiggesAvgWeight = q._NAME;
 
-                  Category cat = new Category();
-                  cat = (from x in categorylogic.List()
-                         select x).OrderByDescending(x => x.Competitors.Count()).FirstOrDefault();
-                  s.BiggestCategory = cat.Name;
+
+                  var mpc = (from x in competitorlogic.List().ToList()
+                              join k in sponsorlogic.List().ToList()
+                              on x.CompetitorId equals k.CompetitorId
+                              group x by x.Name into g
+                              select new
+                              {
+                                    _NAME = g.Key,
+                                    _SPONSORCOUNT = g.SelectMany(x => x.Sponsors).Count()
+                              }).OrderByDescending(x => x._SPONSORCOUNT).FirstOrDefault();
+
+                  s.MostPopularCompetitor = mpc._NAME;
+
+                  var winnersponsor = (from x in competitorlogic.List().ToList()
+                                        join k in sponsorlogic.List().ToList()
+                                        on x.CompetitorId equals k.CompetitorId
+                                        where x.AchivedPlace == 1 && x.Gender == GenderType.Female
+                                        group x by x.Name into g
+                                        select new
+                                        {
+                                              _NAME = g.Key,
+                                              _SPONSORS = g.SelectMany(x => x.Sponsors)
+                                        }).ToList();
+
 
                   return View(s);
             }

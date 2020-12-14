@@ -6,48 +6,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/AddCategory.css">
+    <!-- <link rel="stylesheet" href="~/AddCategory.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
     <title>Edit | Category</title>
 </head>
 <body>
-    <!-- ------------------------------------------------------------------ -->
-    <div class="contentContainer">
-        <h1>Edit Category</h1>
-        <div class="form-outer">
-            <form action="/Home/EditCategory" method="post">
-                <div class="page">
-                    <div class="title">Basic Info</div>
-                    <div class="field">
-                        <div class="label">Name</div>
-                        <select name="Name">
-                            <option value="MrOlympia">Mr. Olympia</option>
-                            <option value="ClassicPhysique">Classic</option>
-                            <option value="MensPhysique">Mens Physique</option>
-                            <option value="WomensBikini">Womens Bikini</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <div class="label">Starting Weight</div>
-                        <input type="number" name="StartingWeight" value="StartingWeight" />
-                    </div>
-
-                    <div class="field">
-                        <div class="label">Maximum Weight</div>
-                        <input type="number" name="MaximumWeight" value="MaximumWeight" />
-                    </div>
-                    <input type="hidden" name="CategoryId" value="CategoryId" />
-                    <div class="field btns">
-                        <button class="submit"><b>Edit</b></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-
-    <script src="~/AddCategory.js"></script>
+    <form action="/Home/EditCategory" method="post">
+        <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+        <input type="hidden" name="Name" value="@Model.Name" />
+        <p>St w</p><br />
+        <input type="number" name="StartingWeight" value="@Model.StartingWeight" />
+        <p>M w</p><br />
+        <input type="number" name="MaximumWeight" value="@Model.MaximumWeight" />
+        <input type="submit" value="Edit" />
+    </form>
 </body>
 </html>

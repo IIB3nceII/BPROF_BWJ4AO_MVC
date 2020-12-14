@@ -6,10 +6,10 @@ namespace Models
 {
       public class Stat
       {
-            public double AvgWeight { get; set; }
+            public CategoryType BiggesAvgWeight { get; set; }
 
             public string MostPopularCompetitor { get; set; }
 
-            public CategoryType BiggestCategory { get; set; }
+            public List<string> Sponziname { get; set; }
       }
 }

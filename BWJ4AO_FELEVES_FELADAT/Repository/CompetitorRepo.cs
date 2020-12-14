@@ -53,6 +53,10 @@ namespace Repository
 
                   old.Number = comp.Number;
                   old.Name = comp.Name;
+                  old.Nationality = comp.Nationality;
+                  old.Height = comp.Height;
+                  old.Weight = comp.Weight;
+                  old.AchivedPlace = comp.AchivedPlace;
 
                   SaveAll();
 
