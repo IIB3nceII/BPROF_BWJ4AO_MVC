@@ -62,9 +62,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             [HttpGet]
             public IActionResult EditCategory(string cid)
             {
-                  Category c = categorylogic.Find(cid);
-
-                  return View(c);
+                  return View(nameof(EditCategory),categorylogic.Find(cid));
             }
 
             [HttpPost]
@@ -79,6 +77,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             public IActionResult DeleteCategory(string id)
             {
                   categorylogic.Delete(id);
+
                   return View(nameof(ListCategories), categorylogic.List());
             }
 

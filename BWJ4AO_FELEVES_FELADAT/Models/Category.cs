@@ -20,6 +20,5 @@ namespace Models
             [Required]
             public int MaximumWeight { get; set; }
             public virtual ICollection<Competitor> Competitors { get; set; }
-
       }
 }

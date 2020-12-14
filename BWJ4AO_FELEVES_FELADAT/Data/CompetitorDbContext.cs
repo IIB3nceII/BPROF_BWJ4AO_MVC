@@ -40,14 +40,16 @@ namespace Data
                         entity
                         .HasOne(Competitor => Competitor.Category)
                         .WithMany(Category => Category.Competitors)
-                        .HasForeignKey(Competitor => Competitor.CategoryId);
+                        .HasForeignKey(Competitor => Competitor.CategoryId)
+                        .OnDelete(DeleteBehavior.Cascade);
                   });
                   modelbuilder.Entity<Sponsor>(entity =>
                   {
                         entity
                         .HasOne(Sponsor => Sponsor.Competitor)
                         .WithMany(Competitor => Competitor.Sponsors)
-                        .HasForeignKey(Sponsor => Sponsor.CompetitorId);
+                        .HasForeignKey(Sponsor => Sponsor.CompetitorId)
+                        .OnDelete(DeleteBehavior.Cascade);
                   });
             }
 

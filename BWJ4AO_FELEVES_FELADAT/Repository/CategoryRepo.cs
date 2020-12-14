@@ -51,6 +51,8 @@ namespace Repository
             {
                   var oldCategory = FindOne(st);
                   oldCategory.Name = item.Name;
+                  oldCategory.StartingWeight = item.StartingWeight;
+                  oldCategory.MaximumWeight = item.MaximumWeight;
 
 
                   cont.SaveChanges();

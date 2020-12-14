@@ -1,50 +1,53 @@
-﻿@model Models.Category
-
-@{
-    Layout = null;
-}
+﻿@using Models
+@model Category
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>EditCategory</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/AddCategory.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+    <title>Edit | Category</title>
 </head>
 <body>
+    <!-- ------------------------------------------------------------------ -->
+    <div class="contentContainer">
+        <h1>Edit Category</h1>
+        <div class="form-outer">
+            <form action="/Home/EditCategory" method="post">
+                <div class="page">
+                    <div class="title">Basic Info</div>
+                    <div class="field">
+                        <div class="label">Name</div>
+                        <select name="Name">
+                            <option value="MrOlympia">Mr. Olympia</option>
+                            <option value="ClassicPhysique">Classic</option>
+                            <option value="MensPhysique">Mens Physique</option>
+                            <option value="WomensBikini">Womens Bikini</option>
+                        </select>
+                    </div>
 
-<h4>Category</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditCategory">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <label>Name</label>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <label>St w</label>
-            <div class="form-group">
-                <label asp-for="StartingWeight" class="control-label"></label>
-                <input asp-for="StartingWeight" class="form-control" />
-                <span asp-validation-for="StartingWeight" class="text-danger"></span>
-            </div>
-            <label>Ma w</label>
-            <div class="form-group">
-                <label asp-for="MaximumWeight" class="control-label"></label>
-                <input asp-for="MaximumWeight" class="form-control" />
-                <span asp-validation-for="MaximumWeight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+                    <div class="field">
+                        <div class="label">Starting Weight</div>
+                        <input type="number" name="StartingWeight" value="StartingWeight" />
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Maximum Weight</div>
+                        <input type="number" name="MaximumWeight" value="MaximumWeight" />
+                    </div>
+                    <input type="hidden" name="CategoryId" value="CategoryId" />
+                    <div class="field btns">
+                        <button class="submit"><b>Edit</b></button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<a href="~/Home/ListCategories"></a>
 
+
+    <script src="~/AddCategory.js"></script>
 </body>
 </html>
