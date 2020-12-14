@@ -4,10 +4,12 @@ using System.Text;
 
 namespace Models
 {
-      class Stat
+      public class Stat
       {
             public double AvgWeight { get; set; }
 
-            public int BiggestCategory { get; set; }
+            public string MostPopularCompetitor { get; set; }
+
+            public CategoryType BiggestCategory { get; set; }
       }
 }

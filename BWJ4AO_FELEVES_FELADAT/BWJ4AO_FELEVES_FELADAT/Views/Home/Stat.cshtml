@@ -1,0 +1,52 @@
+﻿@model Models.Stat
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Lists.css" rel="stylesheet" />
+    <title>ListCategories</title>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav id="nav">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="olympialogo.png" alt="">
+                    </a>
+                </div>
+
+                <div class="menu-icons open">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+
+                <ul class="nav-list">
+                    <div class="menu-icons close">
+                        <i class="icon ion-md-close"></i>
+                    </div>
+                    <li class="nav-item">
+                        <a href="~/Home/Index" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link current">Database</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Home/History" class="nav-link">History</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ----------------------------------------------------------------- -->
+
+    <p>Average weight: @Model.AvgWeight</p>
+    <br />
+    <p>The most popular competitor: @Model.MostPopularCompetitor</p>
+    <br />
+    <p>The biggest category: @Model.BiggestCategory</p>
+
+</body>
+</html>

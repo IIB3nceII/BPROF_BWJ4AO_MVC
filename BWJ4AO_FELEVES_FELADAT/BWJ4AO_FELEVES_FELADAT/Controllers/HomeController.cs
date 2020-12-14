@@ -213,5 +213,27 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
 
                   return RedirectToAction(nameof(Index));
             }
+
+
+            public IActionResult Stat()
+            {
+                  Stat s = new Stat();
+
+                  var q = (from x in competitorlogic.List()
+                           select x.Weight).Average();
+                  s.AvgWeight = q;
+
+                  Competitor c = new Competitor();
+                  var msc= (from x in competitorlogic.List()
+                            select x).OrderByDescending(x => x.Sponsors.Count()).FirstOrDefault();
+                  s.MostPopularCompetitor = msc.Name;
+
+                  Category cat = new Category();
+                  cat = (from x in categorylogic.List()
+                         select x).OrderByDescending(x => x.Competitors.Count()).FirstOrDefault();
+                  s.BiggestCategory = cat.Name;
+
+                  return View(s);
+            }
       }
 }
