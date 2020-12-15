@@ -48,6 +48,9 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.CompetitorId)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Number)
                 </th>
                 <th>
@@ -77,40 +80,44 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Number)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nationality)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Gender)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Height)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Weight)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AchivedPlace)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CategoryId)
-                    </td>
-                    <td>
-                        <a href="/Home/AddSponsor?id=@item.CompetitorId">Add New Sponsor</a>
-                        <br />
-                        <a href="/Home/ListSponsors?id=@item.CompetitorId">List Sponsors</a>
-                        <br />
-                        <a href="/Home/EditCompetitor?id=@item.CompetitorId">Edit Competitor</a>
-                        <br />
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompetitorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nationality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Height)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AchivedPlace)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    <a href="/Home/AddSponsor?id=@item.CompetitorId">Add New Sponsor</a>
+                    <br />
+                    <a href="/Home/ListSponsors?id=@item.CompetitorId">List Sponsors</a>
+                    <br />
+                    <a href="/Home/EditCompetitor?id=@item.CompetitorId">Edit Competitor</a>
+                    <br />
+                    <a href="/Home/DeleteCompetitor?id=@item.CompetitorId">Delete Competitor</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

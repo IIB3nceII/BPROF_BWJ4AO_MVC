@@ -1,1 +1,29 @@
-﻿
+﻿@using Models
+@model Sponsor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="~/AddCategory.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+    <title>Edit | Sponsor</title>
+</head>
+<body>
+    <form action="/Home/EditSponsor" method="post">
+        <input type="hidden" name="SponsorId" value="@Model.SponsorId" />
+        <input type="hidden" name="CompetitorId" value="@Model.CompetitorId" />
+        <p>Name</p><br />
+        <input type="text" name="Name" value="@Model.Name" />
+        <p>Nationality</p><br />
+        <input type="text" name="Nationality" value="@Model.Nationality" />
+        <p>Placeholder</p><br />
+        <input type="number" name="Placeholder" value="@Model.Placeholder" />
+        <p>Type</p><br />
+        <input type="text" name="Type" value="@Model.Type" />
+
+        <input type="submit" value="Edit" />
+    </form>
+</body>
+</html>

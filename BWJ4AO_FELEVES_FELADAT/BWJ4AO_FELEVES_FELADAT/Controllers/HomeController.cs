@@ -106,9 +106,15 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             }
 
             [HttpGet]
+            public IActionResult ListByCompetitor(string id)
+            {
+                  return View(nameof(ListCompetitors), competitorlogic.ListByCompetitor(id));
+            }
+
+            [HttpGet]
             public IActionResult EditCompetitor(string id)
             {
-                  return View(nameof(EditCompetitor), competitorlogic.Find(id));
+                  return View(nameof(EditCompetitor),competitorlogic.Find(id));
             }
 
             [HttpPost]
@@ -139,7 +145,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   s.SponsorId = Guid.NewGuid().ToString();
                   sponsorlogic.Add(s);
 
-                  return View(nameof(ListSponsors), sponsorlogic.ListByCompetitor(s.SponsorId));
+                  return View(nameof(ListSponsors), sponsorlogic.ListBySponsor(s.SponsorId));
             }
 
             [HttpGet]
@@ -148,11 +154,24 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   return View(sponsorlogic.List());
             }
 
+            [HttpGet]
+            public IActionResult ListBySponsor(string id)
+            {
+                  return View(nameof(ListSponsors), sponsorlogic.ListBySponsor(id));
+            }
+
+            [HttpGet]
+            public IActionResult EditSponsor(string id)
+            {
+                  return View(nameof(EditSponsor),sponsorlogic.Find(id));
+            }
+
+            [HttpPost]
             public IActionResult EditSponsor(Sponsor s)
             {
                   sponsorlogic.Update(s.SponsorId, s);
 
-                  return View(nameof(EditSponsor), sponsorlogic.ListByCompetitor(s.SponsorId));
+                  return View(nameof(ListSponsors), sponsorlogic.List());
             }
 
             public IActionResult DeleteSponsor(string id)

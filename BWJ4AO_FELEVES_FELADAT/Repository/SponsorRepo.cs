@@ -28,10 +28,10 @@ namespace Repository
                   Delete(FindOne(name));
             }
 
-            public Sponsor FindOne(string name)
+            public Sponsor FindOne(string id)
             {
                   var q = (from x in cont.Sponsors
-                           where x.Name == name
+                           where x.SponsorId == id
                            select x).FirstOrDefault();
 
                   return q;

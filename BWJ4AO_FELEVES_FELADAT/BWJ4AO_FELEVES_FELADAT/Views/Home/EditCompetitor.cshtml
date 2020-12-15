@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="~/AddCategory.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
-    <title>Edit | Category</title>
+    <title>Edit | Competitor</title>
 </head>
 <body>
     <form action="/Home/EditCompetitor" method="post">
-        <input type="hidden" name="CategoryId" value="@Model.CompetitorId" />
-        <input type="hidden" name="Name" value="@Model.CategoryId" />
+        <input type="hidden" name="CompetitorId" value="@Model.CompetitorId" />
+        <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
         <input type="hidden" name="Gender" value="@Model.Gender" />
         <p>Number</p><br />
         <input type="number" name="Number" value="@Model.Number" />

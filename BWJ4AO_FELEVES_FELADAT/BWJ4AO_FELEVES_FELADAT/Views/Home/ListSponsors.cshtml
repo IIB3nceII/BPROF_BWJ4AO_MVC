@@ -48,6 +48,9 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.SponsorId)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
@@ -68,28 +71,31 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nationality)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Placeholder)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Type)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CompetitorId)
-                    </td>
-                    <td>
-                        <a href="/Home/EditSponsor?id=@item.SponsorId">Edit Sponsor</a>
-                        <br />
-                        <a href="/Home/DeleteSponsor?id=@item.SponsorId">Delete Sponsor</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SponsorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nationality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Placeholder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompetitorId)
+                </td>
+                <td>
+                    <a href="/Home/EditSponsor?id=@item.SponsorId">Edit Sponsor</a>
+                    <br />
+                    <a href="/Home/DeleteSponsor?id=@item.SponsorId">Delete Sponsor</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
