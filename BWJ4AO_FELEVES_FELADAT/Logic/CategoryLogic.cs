@@ -9,15 +9,15 @@ namespace Logic
 {
       public class CategoryLogic
       {
-            IRepository<Competitor> comprepo;
+            //IRepository<Competitor> comprepo;
             IRepository<Category> categrepo;
-            IRepository<Sponsor> sponsrepo;
+            //IRepository<Sponsor> sponsrepo;
 
-            public CategoryLogic(IRepository<Competitor> comprepo, IRepository<Category> categrepo, IRepository<Sponsor> sponsrepo)
+            public CategoryLogic( IRepository<Category> categrepo)
             {
-                  this.comprepo = comprepo;
+                  //this.comprepo = comprepo;
                   this.categrepo = categrepo;
-                  this.sponsrepo = sponsrepo;
+                  //this.sponsrepo = sponsrepo;
             }
 
             public void Add(Category c)
