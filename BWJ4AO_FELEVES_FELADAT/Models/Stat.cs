@@ -10,6 +10,6 @@ namespace Models
 
             public string MostPopularCompetitor { get; set; }
 
-            public List<string> Sponziname { get; set; }
+            public CategoryType BiggestCategory { get; set; }
       }
 }

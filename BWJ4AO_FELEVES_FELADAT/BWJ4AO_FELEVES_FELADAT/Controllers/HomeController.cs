@@ -62,7 +62,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             [HttpGet]
             public IActionResult EditCategory(string id)
             {
-                  return View(nameof(EditCategory),categorylogic.Find(id));
+                  return View(nameof(EditCategory), categorylogic.Find(id));
             }
 
             [HttpPost]
@@ -87,7 +87,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             [HttpGet]
             public IActionResult AddCompetitor(string id)
             {
-                  return View(nameof(AddCompetitor),id);
+                  return View(nameof(AddCompetitor), id);
             }
 
             [HttpPost]
@@ -96,7 +96,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   c.CompetitorId = Guid.NewGuid().ToString();
                   competitorlogic.Add(c);
 
-                  return View(nameof(ListCompetitors),categorylogic.ListByCategory(c.CategoryId));
+                  return View(nameof(ListCompetitors), categorylogic.ListByCategory(c.CategoryId));
             }
 
             [HttpGet]
@@ -114,7 +114,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             [HttpGet]
             public IActionResult EditCompetitor(string id)
             {
-                  return View(nameof(EditCompetitor),competitorlogic.Find(id));
+                  return View(nameof(EditCompetitor), competitorlogic.Find(id));
             }
 
             [HttpPost]
@@ -163,7 +163,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
             [HttpGet]
             public IActionResult EditSponsor(string id)
             {
-                  return View(nameof(EditSponsor),sponsorlogic.Find(id));
+                  return View(nameof(EditSponsor), sponsorlogic.Find(id));
             }
 
             [HttpPost]
@@ -184,7 +184,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
 
             public IActionResult GenerateData()
             {
-                  Category c1 = new Category { CategoryId = Guid.NewGuid().ToString(), Name =CategoryType.MrOlympia,StartingWeight=110,MaximumWeight=135};
+                  Category c1 = new Category { CategoryId = Guid.NewGuid().ToString(), Name = CategoryType.MrOlympia, StartingWeight = 110, MaximumWeight = 135 };
                   categorylogic.Add(c1);
 
                   Category c2 = new Category { CategoryId = Guid.NewGuid().ToString(), Name = CategoryType.ClassicPhysique, StartingWeight = 90, MaximumWeight = 110 };
@@ -205,6 +205,9 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   Competitor co3 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 10, Name = "Chris Bumstead", Nationality = "England", Gender = GenderType.Male, Height = 175, Weight = 103, AchivedPlace = 1, CategoryId = c2.CategoryId, };
                   competitorlogic.Add(co3);
 
+                  Competitor co9 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 22, Name = "Chris No Bumstead", Nationality = "England", Gender = GenderType.Male, Height = 175, Weight = 103, AchivedPlace = 1, CategoryId = c2.CategoryId, };
+                  competitorlogic.Add(co9);
+
                   Competitor co4 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 31, Name = "Breon Ansley", Nationality = "USA", Gender = GenderType.Male, Height = 175, Weight = 98, AchivedPlace = 2, CategoryId = c2.CategoryId, };
                   competitorlogic.Add(co4);
 
@@ -222,7 +225,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
 
                   /*-------------------------------------------------------------------------------------------------------------------------------------------*/
 
-                  Sponsor s1 = new Sponsor {SponsorId=Guid.NewGuid().ToString(), Name="Scitec Nutrition", Nationality="USA", Placeholder="The Scitec Guy", CompetitorId=co1.CompetitorId};
+                  Sponsor s1 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "Scitec Nutrition", Nationality = "USA", Placeholder = "The Scitec Guy", CompetitorId = co1.CompetitorId };
                   sponsorlogic.Add(s1);
 
                   Sponsor s2 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "GymBeam", Nationality = "USA", Placeholder = "The GymBeam Guy", CompetitorId = co1.CompetitorId };
@@ -258,27 +261,30 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
 
 
                   var mpc = (from x in competitorlogic.List().ToList()
-                              join k in sponsorlogic.List().ToList()
-                              on x.CompetitorId equals k.CompetitorId
-                              group x by x.Name into g
-                              select new
-                              {
-                                    _NAME = g.Key,
-                                    _SPONSORCOUNT = g.SelectMany(x => x.Sponsors).Count()
-                              }).OrderByDescending(x => x._SPONSORCOUNT).FirstOrDefault();
+                             join k in sponsorlogic.List().ToList()
+                             on x.CompetitorId equals k.CompetitorId
+                             group x by x.Name into g
+                             select new
+                             {
+                                   _NAME = g.Key,
+                                   _SPONSORCOUNT = g.SelectMany(x => x.Sponsors).Count()
+                             }).OrderByDescending(x => x._SPONSORCOUNT).FirstOrDefault();
 
                   s.MostPopularCompetitor = mpc._NAME;
 
-                  var winnersponsor = (from x in competitorlogic.List().ToList()
-                                        join k in sponsorlogic.List().ToList()
-                                        on x.CompetitorId equals k.CompetitorId
-                                        where x.AchivedPlace == 1 && x.Gender == GenderType.Female
-                                        group x by x.Name into g
-                                        select new
-                                        {
-                                              _NAME = g.Key,
-                                              _SPONSORS = g.SelectMany(x => x.Sponsors)
-                                        }).ToList();
+                  var bgc = (from x in categorylogic.List().ToList()
+                                       join k in competitorlogic.List().ToList()
+                                       on x.CategoryId equals k.CategoryId
+                                       group x by x.Name into g
+                                       select new
+                                       {
+                                             _NAME = g.Key,
+                                             _COUNT = g.SelectMany(x => x.Competitors).Count()
+                                       }).OrderByDescending(x => x._COUNT).FirstOrDefault();
+
+                  s.BiggestCategory = bgc._NAME;
+
+
 
 
                   return View(s);
