@@ -8,14 +8,14 @@ namespace Logic
       public class CompetitorLogic
       {
             IRepository<Competitor> comprepo;
-            IRepository<Category> categrepo;
-            IRepository<Sponsor> sponsrepo;
+            //IRepository<Category> categrepo;
+            //IRepository<Sponsor> sponsrepo;
 
-            public CompetitorLogic(IRepository<Competitor> comprepo, IRepository<Category> categrepo, IRepository<Sponsor> sponsrepo)
+            public CompetitorLogic(IRepository<Competitor> comprepo)
             {
                   this.comprepo = comprepo;
-                  this.categrepo = categrepo;
-                  this.sponsrepo = sponsrepo;
+                  //this.categrepo = categrepo;
+                  //this.sponsrepo = sponsrepo;
             }
 
             public void Add(Competitor c)

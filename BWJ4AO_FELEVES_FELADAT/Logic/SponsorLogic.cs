@@ -9,14 +9,14 @@ namespace Logic
 {
       public class SponsorLogic
       {
-            IRepository<Competitor> comprepo;
-            IRepository<Category> categrepo;
+            //IRepository<Competitor> comprepo;
+            //IRepository<Category> categrepo;
             IRepository<Sponsor> sponsrepo;
 
-            public SponsorLogic(IRepository<Competitor> comprepo, IRepository<Category> categrepo, IRepository<Sponsor> sponsrepo)
+            public SponsorLogic(IRepository<Sponsor> sponsrepo)
             {
-                  this.comprepo = comprepo;
-                  this.categrepo = categrepo;
+                  //this.comprepo = comprepo;
+                  //this.categrepo = categrepo;
                   this.sponsrepo = sponsrepo;
             }
 
