@@ -225,16 +225,16 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
 
                   /*-------------------------------------------------------------------------------------------------------------------------------------------*/
 
-                  Sponsor s1 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "Scitec Nutrition", Nationality = "USA", Placeholder = "The Scitec Guy", CompetitorId = co1.CompetitorId };
+                  Sponsor s1 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "Scitec Nutrition", Nationality = "USA", Placeholder = "The Scitec Guy", Type="food supplement", CompetitorId = co1.CompetitorId };
                   sponsorlogic.Add(s1);
 
-                  Sponsor s2 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "GymBeam", Nationality = "USA", Placeholder = "The GymBeam Guy", CompetitorId = co1.CompetitorId };
+                  Sponsor s2 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "GymBeam", Nationality = "USA", Placeholder = "The GymBeam Guy", Type = "food supplement", CompetitorId = co1.CompetitorId };
                   sponsorlogic.Add(s2);
 
-                  Sponsor s3 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "Biotech USA", Nationality = "Nem USA", Placeholder = "The Biotech Guy", CompetitorId = co5.CompetitorId };
+                  Sponsor s3 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "Biotech USA", Nationality = "Nem USA", Placeholder = "The Biotech Guy", Type = "food supplement", CompetitorId = co5.CompetitorId };
                   sponsorlogic.Add(s3);
 
-                  Sponsor s4 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "Mutant", Nationality = "USA", Placeholder = "The Mutant Guy", CompetitorId = co4.CompetitorId };
+                  Sponsor s4 = new Sponsor { SponsorId = Guid.NewGuid().ToString(), Name = "Mutant", Nationality = "USA", Placeholder = "The Mutant Guy", Type = "food supplement", CompetitorId = co4.CompetitorId };
                   sponsorlogic.Add(s4);
 
 
