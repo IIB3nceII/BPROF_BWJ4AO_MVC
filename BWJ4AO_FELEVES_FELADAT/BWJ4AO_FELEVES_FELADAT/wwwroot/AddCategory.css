@@ -95,7 +95,6 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    inset-inline: 1000;
     transition: all 650ms ease-in-out;
 }
 

@@ -88,7 +88,6 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    inset-inline: 1000;
     transition: all 650ms ease-in-out;
 }
 
@@ -118,7 +117,8 @@ table {
     border-collapse: collapse;
     margin: 0;
     padding: 0;
-    width: 100%;
+    margin-top:5%;
+    width: 80%;
     table-layout: fixed;
 }
 

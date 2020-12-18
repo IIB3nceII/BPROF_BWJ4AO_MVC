@@ -145,7 +145,7 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   s.SponsorId = Guid.NewGuid().ToString();
                   sponsorlogic.Add(s);
 
-                  return View(nameof(ListSponsors), sponsorlogic.ListBySponsor(s.SponsorId));
+                  return View(nameof(ListSponsors), sponsorlogic.List());
             }
 
             [HttpGet]
@@ -199,16 +199,16 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   Competitor co1 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 44, Name = "Brendon Curry", Nationality = "USA", Gender = GenderType.Male, Height = 172, Weight = 120, AchivedPlace = 1, CategoryId = c1.CategoryId, };
                   competitorlogic.Add(co1);
 
-                  Competitor co2 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 12, Name = "William Bonac", Nationality = "USA", Gender = GenderType.Male, Height = 173, Weight = 116, AchivedPlace = 2, CategoryId = c1.CategoryId, };
+                  Competitor co2 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 12, Name = "William Bonac", Nationality = "Netherland", Gender = GenderType.Male, Height = 173, Weight = 116, AchivedPlace = 2, CategoryId = c1.CategoryId, };
                   competitorlogic.Add(co2);
 
-                  Competitor co3 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 10, Name = "Chris Bumstead", Nationality = "England", Gender = GenderType.Male, Height = 175, Weight = 103, AchivedPlace = 1, CategoryId = c2.CategoryId, };
+                  Competitor co3 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 10, Name = "Chris Bumstead", Nationality = "USA", Gender = GenderType.Male, Height = 175, Weight = 130, AchivedPlace = 1, CategoryId = c2.CategoryId, };
                   competitorlogic.Add(co3);
 
-                  Competitor co9 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 22, Name = "Chris No Bumstead", Nationality = "England", Gender = GenderType.Male, Height = 175, Weight = 103, AchivedPlace = 1, CategoryId = c2.CategoryId, };
+                  Competitor co9 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 22, Name = "Chris No Bumstead", Nationality = "USA", Gender = GenderType.Male, Height = 175, Weight = 120, AchivedPlace = 3, CategoryId = c2.CategoryId, };
                   competitorlogic.Add(co9);
 
-                  Competitor co4 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 31, Name = "Breon Ansley", Nationality = "USA", Gender = GenderType.Male, Height = 175, Weight = 98, AchivedPlace = 2, CategoryId = c2.CategoryId, };
+                  Competitor co4 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 31, Name = "Breon Ansley", Nationality = "USA", Gender = GenderType.Male, Height = 175, Weight = 115, AchivedPlace = 2, CategoryId = c2.CategoryId, };
                   competitorlogic.Add(co4);
 
                   Competitor co5 = new Competitor { CompetitorId = Guid.NewGuid().ToString(), Number = 17, Name = "Raymont Edmunds", Nationality = "England", Gender = GenderType.Male, Height = 175, Weight = 82, AchivedPlace = 1, CategoryId = c3.CategoryId, };
@@ -242,52 +242,31 @@ namespace BWJ4AO_FELEVES_FELADAT.Controllers
                   return RedirectToAction(nameof(Index));
             }
 
-
+            [HttpGet]
             public IActionResult Stat()
             {
                   Stat s = new Stat();
+                  StatLogic sl = new StatLogic();
 
-                  var q = (from x in categorylogic.List().ToList()
-                           join k in competitorlogic.List().ToList()
-                           on x.CategoryId equals k.CategoryId
-                           group x by x.Name into g
-                           select new
-                           {
-                                 _NAME = g.Key,
-                                 _AVG = g.SelectMany(x => x.Competitors).Distinct().Average(k => k.Weight)
-                           }).OrderByDescending(x => x._AVG).FirstOrDefault();
-
-                  s.BiggesAvgWeight = q._NAME;
+                  s.BiggesAvgWeight = sl.BiggestAvg(categorylogic.List().ToList(), competitorlogic.List().ToList());
+                  s.HighestCompsCategory = sl.HighestCompCategory(categorylogic.List().ToList(), competitorlogic.List().ToList());
+                  s.OnlyUSACategory = sl.OnlyUSA(categorylogic.List().ToList(), competitorlogic.List().ToList());
 
 
-                  var mpc = (from x in competitorlogic.List().ToList()
-                             join k in sponsorlogic.List().ToList()
-                             on x.CompetitorId equals k.CompetitorId
-                             group x by x.Name into g
-                             select new
-                             {
-                                   _NAME = g.Key,
-                                   _SPONSORCOUNT = g.SelectMany(x => x.Sponsors).Count()
-                             }).OrderByDescending(x => x._SPONSORCOUNT).FirstOrDefault();
-
-                  s.MostPopularCompetitor = mpc._NAME;
-
-                  var bgc = (from x in categorylogic.List().ToList()
-                                       join k in competitorlogic.List().ToList()
-                                       on x.CategoryId equals k.CategoryId
-                                       group x by x.Name into g
-                                       select new
-                                       {
-                                             _NAME = g.Key,
-                                             _COUNT = g.SelectMany(x => x.Competitors).Count()
-                                       }).OrderByDescending(x => x._COUNT).FirstOrDefault();
-
-                  s.BiggestCategory = bgc._NAME;
-
-
-
-
-                  return View(s);
+                  return View(nameof(Stat),s);
             }
+
+            //[HttpPost]
+            //public IActionResult Stat()
+            //{
+            //      Stat s = new Stat();
+            //      StatLogic sl = new StatLogic();
+
+            //      s.BiggesAvgWeight = sl.BiggestAvg(categorylogic.List().ToList(),competitorlogic.List().ToList());
+            //      s.HighestCompsCategory = sl.HighestCompCategory(categorylogic.List().ToList(), competitorlogic.List().ToList());
+            //      s.OnlyUSACategory = sl.OnlyUSA(categorylogic.List().ToList(), competitorlogic.List().ToList());
+
+            //      return View(nameof(Stat),s);
+            //}
       }
 }

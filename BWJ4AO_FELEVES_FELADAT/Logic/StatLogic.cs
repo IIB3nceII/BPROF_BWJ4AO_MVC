@@ -9,58 +9,64 @@ namespace Logic
 {
       public class StatLogic
       {
-            public CategoryType BiggestAvg(IRepository<Category> r, IRepository<Competitor> r2)
-            {
-                  CategoryLogic c = new CategoryLogic(r);
-                  CompetitorLogic com = new CompetitorLogic(r2);
+            public IRepository<Category> Cate { get; set; }
+            public IRepository<Competitor> Com { get; set; }
+            public IRepository<Sponsor> Spo { get; set; }
 
-                  var q = (from x in c.List()
-                           join k in com.List()
+            public StatLogic(IRepository<Category> cate, IRepository<Competitor> com,IRepository<Sponsor> spo)
+            {
+                  this.Cate = cate;
+                  this.Com = com;
+                  this.Spo = spo;
+            }
+
+            public StatLogic(IRepository<Category> cate, IRepository<Competitor> com)
+            {
+                  this.Cate = cate;
+                  this.Com = com;
+            }
+
+            public StatLogic()
+            {
+
+            }
+
+            public CategoryType BiggestAvg(List<Category> c, List<Competitor> com)
+            {
+
+                  var q = (from x in com
+                           group x by x.CategoryId into g
+                           join k in c
+                           on g.Key equals k.CategoryId
+                           orderby g.Average(x => x.Weight) descending
+                           select k.Name).FirstOrDefault();
+
+                  return q;
+            }
+
+            public CategoryType HighestCompCategory(List<Category> c, List<Competitor> com)
+            {
+                  var q = (from x in c
+                           join k in com
                            on x.CategoryId equals k.CategoryId
-                           group x by x.Name into g
-                           select new
-                           {
-                                 _NAME = g.Key,
-                                 _AVG = g.SelectMany(x => x.Competitors).Distinct().Average(k => k.Weight)
-                           }).OrderByDescending(x => x._AVG).FirstOrDefault();
+                           orderby k.Height descending
+                           select x.Name).FirstOrDefault();
 
-                  return q._NAME;
+
+                  return q;
             }
 
-            public string MostPopularComp(IRepository<Competitor> r, IRepository<Sponsor> r2)
+            public CategoryType OnlyUSA(List<Category> c, List<Competitor> com)
             {
-                  CompetitorLogic c = new CompetitorLogic(r);
-                  SponsorLogic s = new SponsorLogic(r2);
+                  var bgc = (from x in com
+                             where x.Nationality=="USA"
+                             group x by x.CategoryId into g
+                             join k in c
+                             on g.Key equals k.CategoryId
+                             orderby g.Count() descending
+                             select k.Name).FirstOrDefault();
 
-                  var mpc = (from x in c.List()
-                             join k in s.List()
-                             on x.CompetitorId equals k.CompetitorId
-                             group x by x.Name into g
-                             select new
-                             {
-                                   _NAME = g.Key,
-                                   _SPONSORCOUNT = g.SelectMany(x => x.Sponsors).Count()
-                             }).OrderByDescending(x => x._SPONSORCOUNT).FirstOrDefault();
-
-                  return mpc._NAME;
-            }
-
-            public CategoryType BiggestCategory(IRepository<Category> r, IRepository<Competitor> r2)
-            {
-                  CategoryLogic c = new CategoryLogic(r);
-                  CompetitorLogic com = new CompetitorLogic(r2);
-
-                  var bgc = (from x in c.List()
-                             join k in com.List()
-                             on x.CategoryId equals k.CategoryId
-                             group x by x.Name into g
-                             select new
-                             {
-                                   _NAME = g.Key,
-                                   _COUNT = g.SelectMany(x => x.Competitors).Count()
-                             }).OrderByDescending(x => x._COUNT).FirstOrDefault();
-
-                  return bgc._NAME;
+                  return bgc;
             }
       }
 }

@@ -6,24 +6,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="~/AddCategory.css"> -->
+    <link rel="stylesheet" href="~/AddCategory.css">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
     <title>Edit | Sponsor</title>
 </head>
 <body>
-    <form action="/Home/EditSponsor" method="post">
-        <input type="hidden" name="SponsorId" value="@Model.SponsorId" />
-        <input type="hidden" name="CompetitorId" value="@Model.CompetitorId" />
-        <p>Name</p><br />
-        <input type="text" name="Name" value="@Model.Name" />
-        <p>Nationality</p><br />
-        <input type="text" name="Nationality" value="@Model.Nationality" />
-        <p>Placeholder</p><br />
-        <input type="number" name="Placeholder" value="@Model.Placeholder" />
-        <p>Type</p><br />
-        <input type="text" name="Type" value="@Model.Type" />
+    <header id="header">
+        <div class="container">
+            <nav id="nav">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="~/olympialogo.png" alt="">
+                    </a>
+                </div>
 
-        <input type="submit" value="Edit" />
-    </form>
+                <div class="menu-icons open">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+
+                <ul class="nav-list">
+                    <div class="menu-icons close">
+                        <i class="icon ion-md-close"></i>
+                    </div>
+                    <li class="nav-item">
+                        <a href="~/Home/Index" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link current">Database</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Home/History" class="nav-link">History</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ------------------------------------------------------------------- -->
+    <div class="contentContainer">
+        <h1>Edit Sponsor</h1>
+        <div class="form-outer">
+            <form action="/Home/EditSponsor" method="post">
+                <div class="page">
+                    <input type="hidden" name="SponsorId" value="@Model.SponsorId" />
+                    <input type="hidden" name="CompetitorId" value="@Model.CompetitorId" />
+                    <div class="field">
+                        <div class="label">Name</div>
+                        <input type="text" name="Name" value="@Model.Name" />
+                    </div>
+                    <div class="field">
+                        <div class="label">Nationality</div>
+                        <input type="text" name="Nationality" value="@Model.Nationality" />
+                    </div>
+                    <div class="field">
+                        <div class="label">Placeholder</div>
+                        <input type="text" name="Placeholder" value="@Model.Placeholder" />
+                    </div>
+                    <div class="field">
+                        <div class="label">Type</div>
+                        <input type="text" name="Type" value="@Model.Type" />
+                    </div>
+                    <div class="field btns">
+                        <button class="submit"><b>Edit</b></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+        <script src="~/AddCategory.js"></script>
 </body>
 </html>
