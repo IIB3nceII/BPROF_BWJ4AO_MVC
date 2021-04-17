@@ -14,6 +14,7 @@ namespace Models
       public class Competitor
       {
             [Key]
+            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
             public string CompetitorId { get; set; }
             [Range(1,200)]
             public int Number { get; set; }
