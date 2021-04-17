@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using System;
 
 namespace Data
 {
-      public class CompetitorDbContext : DbContext
+      public class CompetitorDbContext : IdentityDbContext<IdentityUser>
       {
             public DbSet<Competitor> Competitors { get; set; }
             public DbSet<Category> Categories { get; set; }
@@ -26,7 +28,8 @@ namespace Data
                   {
                         optionsBuilder.
                             UseLazyLoadingProxies().
-                            UseSqlServer(@"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\CompetitorDB.mdf;integrated security=True;MultipleActiveResultSets=True");
+                            // UseSqlServer(@"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\CompetitorDB.mdf;integrated security=True;MultipleActiveResultSets=True");
+                            UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MrODb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                   }
             }
 
