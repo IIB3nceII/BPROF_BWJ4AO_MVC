@@ -1,9 +1,12 @@
+using Logic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Models;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +26,12 @@ namespace ApiApp
             public void ConfigureServices(IServiceCollection services)
             {
                   services.AddControllers();
+                  services.AddTransient<CategoryLogic, CategoryLogic>();
+                  services.AddTransient<CompetitorLogic, CompetitorLogic>();
+                  services.AddTransient<SponsorLogic, SponsorLogic>();
+                  services.AddTransient<IRepository<Category>, CategoryRepo>();
+                  services.AddTransient<IRepository<Competitor>, CompetitorRepo>();
+                  services.AddTransient<IRepository<Sponsor>, SponsorRepo>();
             }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
