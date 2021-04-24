@@ -1,7 +1,9 @@
+using Data;
 using Logic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,9 +31,25 @@ namespace ApiApp
                   services.AddTransient<CategoryLogic, CategoryLogic>();
                   services.AddTransient<CompetitorLogic, CompetitorLogic>();
                   services.AddTransient<SponsorLogic, SponsorLogic>();
+                  services.AddTransient<AuthLogic,AuthLogic>();
+
                   services.AddTransient<IRepository<Category>, CategoryRepo>();
                   services.AddTransient<IRepository<Competitor>, CompetitorRepo>();
                   services.AddTransient<IRepository<Sponsor>, SponsorRepo>();
+
+                  services.AddDbContext<CompetitorDbContext>();
+
+                  services.AddIdentity<IdentityUser, IdentityRole>(
+                     option =>
+                     {
+                           option.Password.RequireDigit = false;
+                           option.Password.RequiredLength = 6;
+                           option.Password.RequireNonAlphanumeric = false;
+                           option.Password.RequireUppercase = false;
+                           option.Password.RequireLowercase = false;
+                     }
+                 ).AddEntityFrameworkStores<CompetitorDbContext>()
+                 .AddDefaultTokenProviders();
             }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
