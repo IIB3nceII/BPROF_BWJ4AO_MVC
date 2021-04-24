@@ -1,11 +1,17 @@
-import React from 'react';
-import './App.scss';
+import React from "react";
+import "./App.scss";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from './routes';
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="app">
-      <h1 className="">Hello</h1>
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <AppRoutes />
+      </div>
+    </Router>
   );
 }
 
