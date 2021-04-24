@@ -1,5 +1,6 @@
 using Data;
 using Logic;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,11 +8,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Models;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ApiApp
@@ -31,7 +34,7 @@ namespace ApiApp
                   services.AddTransient<CategoryLogic, CategoryLogic>();
                   services.AddTransient<CompetitorLogic, CompetitorLogic>();
                   services.AddTransient<SponsorLogic, SponsorLogic>();
-                  services.AddTransient<AuthLogic,AuthLogic>();
+                  services.AddTransient<AuthLogic, AuthLogic>();
 
                   services.AddTransient<IRepository<Category>, CategoryRepo>();
                   services.AddTransient<IRepository<Competitor>, CompetitorRepo>();
@@ -50,6 +53,25 @@ namespace ApiApp
                      }
                  ).AddEntityFrameworkStores<CompetitorDbContext>()
                  .AddDefaultTokenProviders();
+
+                  services.AddAuthentication(option =>
+                  {
+                        option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                        option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                        option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                  }).AddJwtBearer(options =>
+                  {
+                        options.SaveToken = true;
+                        options.RequireHttpsMetadata = true;
+                        options.TokenValidationParameters = new TokenValidationParameters()
+                        {
+                              ValidateIssuer = true,
+                              ValidateAudience = true,
+                              ValidAudience = "http://www.security.org",
+                              ValidIssuer = "http://www.security.org",
+                              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Paris Berlin Cairo Sydney Tokyo Beijing Rome London Athens"))
+                        };
+                  });
             }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -68,6 +90,8 @@ namespace ApiApp
                   app.UseStaticFiles();
 
                   app.UseRouting();
+
+                  app.UseAuthentication();
 
                   app.UseAuthorization();
 

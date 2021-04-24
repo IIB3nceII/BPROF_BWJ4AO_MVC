@@ -38,7 +38,7 @@ namespace Logic
                   var result = await _userManager.CreateAsync(user, model.Password);
                   if (result.Succeeded)
                   {
-                        await _userManager.AddToRoleAsync(user, "Customer");
+                       // await _userManager.AddToRoleAsync(user, "Customer");
                   }
                   return user.UserName;
             }
