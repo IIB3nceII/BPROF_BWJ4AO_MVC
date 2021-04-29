@@ -2,16 +2,18 @@ import React from "react";
 import "./Home.scss";
 import HomeBg from "../../assets/2020-Olympia-bg.jpg";
 import ArnoldPic from "../../assets/ArnoldProfilePic.jpg";
+import ArnoldBgPic from "../../assets/arnold01.jpg";
 import { ScaleIcon } from "@heroicons/react/solid";
+import Footer from "../Footer";
 
 function Home() {
   return (
     <div className="bg-gray-50 items-center h-screen">
       <div
-        className="  h-4/6 bg-local bg-no-repeat bg-cover"
+        className="h-4/6 bg-local bg-no-repeat bg-cover"
         style={{ backgroundImage: `url('${HomeBg}')` }}
       >
-        <div className="bg-red-900 bg-opacity-40 h-full">
+        <div className="bg-red-900 bg-opacity-60 h-full">
           <div className="w-8/12 h-full ml-auto mr-auto text-white text-left flex-wrap">
             <h3 className="text-3xl pt-28 ml-2">Welcome to the</h3>
             <h1 className="text-8xl mb-10">Mr. Olympia</h1>
@@ -90,21 +92,43 @@ function Home() {
         </div>
       </div>
 
-        <div>
-            <div>
-                <div>
-                <ScaleIcon className="h-32" />
-                <p>“Not many people understand what a pump is. It must be experienced to be understood. It is the greatest feeling that I get. I search for this pump because it means that that my muscles will grow when I get it. I get a pump when the blood is running into my muscles. They become really tight with blood. Like the skin is going to explode any minute. It’s like someone putting air in my muscles. It blows up. It feels fantastic.”</p>
-                </div>
-
-                <div>
-                <div className="">
-                    <img className="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src={ArnoldPic} alt="Picture of Arnold Schwarzenegger" loading="lazy" />
-                    </div>
-                    <h1>Arnold Schwarzenegger <br />(7 Mr Olympia wins)</h1>
-                </div>
+      <div
+        className="flex bg-fixed bg-no-repeat bg-cover text-white"
+        style={{ backgroundImage: `url('${ArnoldBgPic}')`, height: "600px" }}
+      >
+        <div className="bg-red-900 bg-opacity-60">
+          <div className="w-8/12 mx-auto">
+            <div className="flex-col items-center text-center">
+              <ScaleIcon className="h-32 ml-auto mr-auto" />
+              <p className="m-5 font-normal text-2xl">
+                “Not many people understand what a pump is. It must be
+                experienced to be understood. It is the greatest feeling that I
+                get. I search for this pump because it means that that my
+                muscles will grow when I get it. I get a pump when the blood is
+                running into my muscles. They become really tight with blood.
+                Like the skin is going to explode any minute. It’s like someone
+                putting air in my muscles. It blows up. It feels fantastic.”
+              </p>
             </div>
+
+            <div>
+              <div className="h-10/12">
+                <img
+                  className="w-32 h-32 rounded-full mx-auto"
+                  src={ArnoldPic}
+                  alt="Arnold Schwarzenegger"
+                  loading="lazy"
+                />
+              </div>
+              <h1 className="text-center mt-5 font-normal">
+                Arnold Schwarzenegger <br />
+                (7 Mr Olympia wins)
+              </h1>
+            </div>
+          </div>
         </div>
+      </div>
+      <Footer />
     </div>
   );
 }
