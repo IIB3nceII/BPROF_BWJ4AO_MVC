@@ -8,7 +8,7 @@ import PinterestIcon from "@material-ui/icons/Pinterest";
 
 function Footer() {
   return (
-    <div className="flex justify-around items-center h-48 text-gray-500">
+    <div className="flex justify-around items-center h-48 text-gray-500 bg-gray-50">
       <div className="flex w-1/2 items-center text-center">
         <p className="pr-5 ml-auto cursor-pointer">Contacts</p>
         <span className="h-8 bg-gray-500" style={{ width: "1px" }}></span>

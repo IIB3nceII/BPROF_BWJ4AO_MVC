@@ -5,6 +5,7 @@ import OlympiaLogo from "../assets/olympialogo1.png";
 import { connect } from "react-redux";
 import { IRootState } from "../store/reducers";
 import { setSidebarOpen, setSidebarClose } from "../store/reducers/appManager";
+import { Link } from "react-router-dom";
 
 export interface IHeaderProps extends StateProps, DispatchProps {}
 
@@ -35,15 +36,21 @@ function Header(props: IHeaderProps) {
         </div>
       </div>
       <div className="flex px-6 ml-10 mr-10 items-center">
+        <Link to="/">
         <img
           src={OlympiaLogo}
           alt="Olympia logo"
           loading="lazy"
-          className="h-16"
+          className="h-16 cursor-pointer"
         />
+        </Link>
       </div>
       <div className="flex w-40 items-center p-6">
-        <p className="ml-10 text-lg text-gray-500 cursor-pointer hover:underline">Sign in</p>
+        <Link to="/sign-in">
+          <p className="ml-10 text-lg text-gray-500 cursor-pointer hover:underline">
+            Sign in
+          </p>
+        </Link>
       </div>
     </div>
   );
