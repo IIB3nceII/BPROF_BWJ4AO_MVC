@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import { connect } from "react-redux";
 import { setSidebarOpen, setSidebarClose } from "./store/reducers/appManager";
 import { IRootState } from "./store/reducers";
-import Sidebar from "./components/Sidebar";
 
 export interface IAppProps extends StateProps, DispatchProps {}
 
@@ -15,9 +14,7 @@ function App(props: IAppProps) {
     <Router>
       <div className="app">
         <Header />
-
         <AppRoutes />
-        {props.sidebarState && <Sidebar />}
       </div>
     </Router>
   );

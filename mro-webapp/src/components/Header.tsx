@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Header.scss";
 import { MenuIcon } from "@heroicons/react/solid";
 import OlympiaLogo from "../assets/olympialogo1.png";
 import { connect } from "react-redux";
@@ -8,19 +9,30 @@ import { setSidebarOpen, setSidebarClose } from "../store/reducers/appManager";
 export interface IHeaderProps extends StateProps, DispatchProps {}
 
 function Header(props: IHeaderProps) {
-
-  const openSidebar=()=>{
-    props.setSidebarOpen();
-  }
-
-
   return (
     <div className="sticky top-0 bg-gray-50 h-24 flex justify-between ms:justify-between">
-      <div
-        className="flex p-6 items-center"
-        onMouseEnter={openSidebar}
-      >
+      <div className="menu flex w-40 p-6 items-center">
         <MenuIcon className="h-10 text-gray-500 cursor-pointer transition duration-100 transform" />
+
+        <div className="sidebar bg-gray-50">
+          <ul className="h-10 ml-7 text-4xl font-bold">
+            <li className="mt-32">
+              <p>Igenb</p>
+            </li>
+            <li>
+              <p>Igenb</p>
+            </li>
+            <li>
+              <p>Igenb</p>
+            </li>
+            <li>
+              <p>Igenb</p>
+            </li>
+            <li className="mt-12 text-base font-thin">
+              <p>Igenb</p>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="flex px-6 ml-10 mr-10 items-center">
         <img
@@ -30,8 +42,8 @@ function Header(props: IHeaderProps) {
           className="h-16"
         />
       </div>
-      <div className="flex items-center p-6 ">
-        <p className="ml-10 text-lg text-gray-500 cursor-pointer">Sign in</p>
+      <div className="flex w-40 items-center p-6">
+        <p className="ml-10 text-lg text-gray-500 cursor-pointer hover:underline">Sign in</p>
       </div>
     </div>
   );

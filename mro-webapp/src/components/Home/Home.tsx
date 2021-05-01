@@ -1,6 +1,14 @@
 import React from "react";
 import "./Home.scss";
 import HomeBg from "../../assets/2020-Olympia-bg.jpg";
+
+import MensOpen from "../../assets/mop01.jpg";
+import WmBikini from "../../assets/wmbikini01.jpg";
+import ClassicPhysique from "../../assets/classic01.jpg";
+import MensPhisyque from "../../assets/mens01.jpg";
+import WmPhisyque from "../../assets/wmsp01.jpg";
+import MrO from "../../assets/brendonprofp.jpg";
+
 import ArnoldPic from "../../assets/ArnoldProfilePic.jpg";
 import ArnoldBgPic from "../../assets/arnold01.jpg";
 import { ScaleIcon } from "@heroicons/react/solid";
@@ -28,8 +36,8 @@ function Home() {
         </div>
       </div>
 
-      <div className="items-center text-center h-full bg-gray-50">
-        <div className="w-8/12 ml-auto mr-auto ">
+      <div className="items-center text-center bg-gray-50">
+        <div className="w-8/12 ml-auto mr-auto" style={{ height: "150vh" }}>
           <div className="mt-10 mb-28">
             <h3 className="text-gray-500 text-3xl font-medium">Check</h3>
             <h1 className="text-gray-500 text-4xl font-medium">
@@ -37,56 +45,111 @@ function Home() {
             </h1>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
-            <div className="flex-col h-56 bg-red-600 bg-opacity-50 shadow-2xl rounded-lg">
-              <h1 className="m-5 text-4xl font-medium">Men’s Open</h1>
-              <p className="m-5 text-lg font-medium">
-                All the top players participate here with their weights starting
-                from 300 lbs or 137 kgs.
-              </p>
+          <div className="grid grid-cols-3 gap-4 text-white">
+            <div
+              className="rounded-lg bg-local bg-no-repeat bg-cover"
+              style={{ backgroundImage: `url('${MensOpen}')` }}
+            >
+              <div
+                className="flex-col bg-red-600 bg-opacity-50 shadow-2xl rounded-lg"
+                style={{ height: "50vh" }}
+              >
+                <span className="h-24">&nbsp;</span>
+                <h1 className="mx-auto mt-12 text-4xl font-medium">Men’s Open</h1>
+                <p className="mx-auto mt-40 text-lg font-medium">
+                  All the top players participate here with their weights
+                  starting from 300 lbs or 137 kgs.
+                </p>
+              </div>
             </div>
 
-            <div className="flex-col h-56 bg-red-600 bg-opacity-50 shadow-2xl rounded-lg">
-              <h1 className="m-5 text-4xl font-medium">Women's Bikini</h1>
-              <p className="m-5 text-lg font-medium">
-                The IFBB WOS Ms. Olympia is both the highest ranking
-                professional female bodybuilding competition and the title of
-                the winner of the competition.
-              </p>
+            <div
+              className="rounded-lg bg-local bg-no-repeat bg-cover"
+              style={{ backgroundImage: `url('${WmBikini}')` }}
+            >
+              <div
+                className="flex-col bg-red-600 bg-opacity-50 shadow-2xl rounded-lg"
+                style={{ height: "50vh" }}
+              >
+                <span className="h-24">&nbsp;</span>
+                <h1 className="mx-auto mt-12 text-4xl font-medium">Women's Bikini</h1>
+                <p className="mx-auto mt-40 text-lg font-medium">
+                  The IFBB WOS Ms. Olympia is both the highest ranking
+                  professional female bodybuilding competition and the title of
+                  the winner of the competition.
+                </p>
+              </div>
             </div>
 
-            <div className="flex-col h-56 bg-red-600 bg-opacity-50 shadow-2xl rounded-lg">
-              <h1 className="m-5 text-4xl font-medium">Classic Physique</h1>
-              <p className="m-5 text-lg font-medium">
-                This division is targeted to men who want to build their muscles
-                and size above the normal Men’s Physique limits (discussed
-                later), but not to the extent of Open Division Bodybuilding.
-              </p>
+            <div
+              className="rounded-lg bg-local bg-no-repeat bg-cover"
+              style={{ backgroundImage: `url('${ClassicPhysique}')` }}
+            >
+              <div
+                className="flex-col bg-red-600 bg-opacity-50 shadow-2xl rounded-lg"
+                style={{ height: "50vh" }}
+              >
+                 <span className="h-24">&nbsp;</span>
+                <h1 className="mx-auto mt-12 text-4xl font-medium">Classic Physique</h1>
+                <p className="mx-auto mt-40 text-lg font-medium">
+                  This division is targeted to men who want to build their
+                  muscles and size above the normal Men’s Physique limits
+                  (discussed later), but not to the extent of Open Division
+                  Bodybuilding.
+                </p>
+              </div>
             </div>
 
-            <div className="flex-col h-56 bg-red-600 bg-opacity-50 shadow-2xl rounded-lg">
-              <h1 className="m-5 text-4xl font-medium">Men’s Physique</h1>
-              <p className="m-5 text-lg font-medium">
-                The judges pay close attention to Athletic, Less Muscularity and
-                an Aesthetic physique.
-              </p>
+            <div
+              className="rounded-lg bg-local bg-no-repeat bg-cover"
+              style={{ backgroundImage: `url('${MensPhisyque}')` }}
+            >
+              <div
+                className="flex-col bg-red-600 bg-opacity-50 shadow-2xl rounded-lg"
+                style={{ height: "50vh" }}
+              >
+                <span className="h-24">&nbsp;</span>
+                <h1 className="mx-auto mt-12 text-4xl font-medium">Men’s Physique</h1>
+                <p className="mx-auto mt-40 text-lg font-medium">
+                  The judges pay close attention to Athletic, Less Muscularity
+                  and an Aesthetic physique.
+                </p>
+              </div>
             </div>
 
-            <div className="flex-col h-56 bg-red-600 bg-opacity-50 shadow-2xl rounded-lg">
-              <h1 className="m-5 text-4xl font-medium">Women’s Physique</h1>
-              <p className="m-5 text-lg font-medium">
-                Competitors should display a toned, athletic physique showcasing
-                femininity, muscle tone, beauty/flow of physique.
-              </p>
+            <div
+              className="rounded-lg bg-local bg-no-repeat bg-cover"
+              style={{ backgroundImage: `url('${WmPhisyque}')` }}
+            >
+              <div
+                className="flex-col bg-red-600 bg-opacity-50 shadow-2xl rounded-lg"
+                style={{ height: "50vh" }}
+              >
+                <span className="h-24">&nbsp;</span>
+                <h1 className="mx-auto mt-12 text-4xl font-medium">Women’s Physique</h1>
+                <p className="mx-auto mt-40 text-lg font-medium">
+                  Competitors should display a toned, athletic physique
+                  showcasing femininity, muscle tone, beauty/flow of physique.
+                </p>
+              </div>
             </div>
 
-            <div className="flex-col h-56 bg-red-600 bg-opacity-50 shadow-2xl rounded-lg">
-              <h1 className="m-5 text-4xl font-medium">Mr. Olympia</h1>
-              <p className="m-5 text-lg font-medium">
-                The requirements for this class, just as the name implies, is
-                that the athlete needs to weigh up to and under 212 Lb (i.e.,
-                96.6 kg).
-              </p>
+            <div
+              className="rounded-lg bg-local bg-no-repeat bg-cover"
+              style={{ backgroundImage: `url('${MrO}')` }}
+            >
+              <div
+                className="flex-col bg-red-600 bg-opacity-50 shadow-2xl rounded-lg"
+                style={{ height: "50vh" }}
+              >
+                <span className="h-24">&nbsp;</span>
+                <h1 className="mx-auto mt-12 text-4xl font-medium">Mr. Olympia</h1>
+                <p className="mx-auto mt-40 text-lg font-medium">
+                  The requirements for this class, just as the name implies, is
+                  that the athlete needs to weigh up to and under 212 Lb (i.e.,
+                  96.6 kg).
+                </p>
+              </div>
             </div>
           </div>
         </div>
