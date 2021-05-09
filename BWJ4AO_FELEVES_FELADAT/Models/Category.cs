@@ -15,11 +15,11 @@ namespace Models
             [Key]
             [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
             public string CategoryId { get; set; }
-            [Required]
+            // [Required]
             public CategoryType Name { get; set; }
-            [Required]
+            // [Required]
             public int StartingWeight { get; set; }
-            [Required]
+            // [Required]
             public int MaximumWeight { get; set; }
             public virtual ICollection<Competitor> Competitors { get; set; }
       }
