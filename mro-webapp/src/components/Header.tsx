@@ -35,19 +35,19 @@ function Header(props: IHeaderProps) {
           </ul>
         </div>
       </div>
-      <div className="flex px-6 ml-10 mr-10 items-center">
+      <div className="flex px-6 sm:ml-10 sm:mr-10 items-center">
         <Link to="/">
         <img
           src={OlympiaLogo}
           alt="Olympia logo"
           loading="lazy"
-          className="h-16 cursor-pointer"
+          className="w-24 sm:w-32 cursor-pointer"
         />
         </Link>
       </div>
       <div className="flex w-40 items-center p-6">
         <Link to="/sign-in">
-          <p className="ml-10 text-lg text-gray-500 cursor-pointer hover:underline">
+          <p className="ml-10 text-xs sm:text-lg text-gray-500 cursor-pointer hover:underline">
             Sign in
           </p>
         </Link>
