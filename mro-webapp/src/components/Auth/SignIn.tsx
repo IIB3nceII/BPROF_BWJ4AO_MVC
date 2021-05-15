@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pic from "../../assets/pickerbg.jpg";
 import { Button, TextField } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -47,6 +47,10 @@ function SignIn(props: ISignInProps) {
       });
   };
   */
+
+  useEffect(() =>{
+    console.log(props.account)
+  },[props.account])
 
   const sendLoginRequest = () => props.login(userName, password);
 
@@ -106,7 +110,7 @@ function SignIn(props: ISignInProps) {
 
           <div className="w-full px-12 mt-12 items-center text-center">
             <p>
-              if you don't have an account{" "}
+              If you don't have an account please{" "}
               <Link to="/register" className="cursor-pointer hover:underline">
                 register!
               </Link>

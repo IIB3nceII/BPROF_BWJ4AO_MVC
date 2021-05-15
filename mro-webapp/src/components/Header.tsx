@@ -18,19 +18,16 @@ function Header(props: IHeaderProps) {
         <div className="sidebar bg-gray-50">
           <ul className="h-10 ml-7 text-4xl font-bold">
             <li className="mt-32">
-              <p>Igenb</p>
+              <p className="cursor-pointer">Create new</p>
             </li>
             <li>
-              <p>Igenb</p>
+              <p className="cursor-pointer">Edit</p>
             </li>
             <li>
-              <p>Igenb</p>
-            </li>
-            <li>
-              <p>Igenb</p>
+              <p className="cursor-pointer">History</p>
             </li>
             <li className="mt-12 text-base font-thin">
-              <p>Igenb</p>
+              <p className="cursor-pointer">+ Info</p>
             </li>
           </ul>
         </div>

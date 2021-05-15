@@ -4,6 +4,7 @@ import { IUser } from "../../model/user.model";
 
 export const ACTION_TYPES = {
   LOGIN: "authentication/LOGIN",
+  REGISTER: "authentication/REGISTER",
   LOGOUT: "authentication/LOGOUT",
   ERROR_MESSAGE: "authentication/ERROR_MESSAGE",
 };
@@ -47,9 +48,32 @@ export default (
         loginError: false,
         loginSuccess: true,
       };
+    case REQUEST(ACTION_TYPES.REGISTER):
+      return {
+        ...state,
+        loading: true,
+      };
+    case FAILURE(ACTION_TYPES.REGISTER):
+      return {
+        ...initialState,
+        errorMessage: action.payload,
+        loginError: true,
+      };
+    case SUCCESS(ACTION_TYPES.REGISTER):
+      return {
+        ...state,
+        account: {
+          userName: action.payload.data.username,
+          token: action.payload.data.token,
+        },
+        loading: false,
+        loginError: false,
+        loginSuccess: true,
+      };
     case ACTION_TYPES.LOGOUT:
       return {
         ...initialState,
+        account: {},
       };
     case ACTION_TYPES.ERROR_MESSAGE:
       return {
@@ -70,6 +94,17 @@ export const login: (UserName: string, Password: string) => void =
     dispatch({
       type: ACTION_TYPES.LOGIN,
       payload: axios.put("/Auth", {
+        UserName,
+        Password,
+      }),
+    });
+  };
+
+export const register: (UserName: string, Password: string) => void =
+  (UserName, Password) => (dispatch: any, getState: any) => {
+    dispatch({
+      type: ACTION_TYPES.REGISTER,
+      payload: axios.post("/Auth", {
         UserName,
         Password,
       }),
