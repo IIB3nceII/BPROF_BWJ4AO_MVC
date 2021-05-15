@@ -72,6 +72,15 @@ namespace ApiApp
                               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Paris Berlin Cairo Sydney Tokyo Beijing Rome London Athens"))
                         };
                   });
+
+                  services.AddCors(options =>
+                  {
+                        options.AddDefaultPolicy(
+                                          builder =>
+                                          {
+                                                builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                                          });
+                  });
             }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -85,6 +94,8 @@ namespace ApiApp
                         app.UseExceptionHandler("/Error");
                         app.UseHsts();
                   }
+
+                  app.UseCors();
 
                   app.UseHttpsRedirection();
                   app.UseStaticFiles();
