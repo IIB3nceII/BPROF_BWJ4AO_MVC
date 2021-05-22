@@ -47,6 +47,7 @@ export default (
         loading: false,
         loginError: false,
         loginSuccess: true,
+        isAuthenticated: true,
       };
     case REQUEST(ACTION_TYPES.REGISTER):
       return {

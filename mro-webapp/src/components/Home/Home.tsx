@@ -183,7 +183,7 @@ function Home() {
                   loading="lazy"
                 />
               </div>
-              <h1 className="text-center mt-5 font-normal">
+              <h1 className="text-center mt-5 text-base font-medium">
                 Arnold Schwarzenegger <br />
                 (7 Mr Olympia wins)
               </h1>

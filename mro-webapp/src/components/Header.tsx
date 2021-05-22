@@ -18,28 +18,36 @@ function Header(props: IHeaderProps) {
         <div className="sidebar bg-gray-50">
           <ul className="h-10 ml-7 text-4xl font-bold">
             <li className="mt-32">
-              <p className="cursor-pointer">Create new</p>
+              <Link to="/create">
+                <p className="cursor-pointer">Create new</p>
+              </Link>
             </li>
             <li>
-              <p className="cursor-pointer">Edit</p>
+              <Link to="/edit">
+                <p className="cursor-pointer">Edit</p>
+              </Link>
             </li>
             <li>
-              <p className="cursor-pointer">History</p>
+              <Link to="/view">
+                <p className="cursor-pointer">View</p>
+              </Link>
             </li>
             <li className="mt-12 text-base font-thin">
-              <p className="cursor-pointer">+ Info</p>
+              <Link to="">
+                <p className="cursor-pointer">+ Info</p>
+              </Link>
             </li>
           </ul>
         </div>
       </div>
       <div className="flex px-6 sm:ml-10 sm:mr-10 items-center">
         <Link to="/">
-        <img
-          src={OlympiaLogo}
-          alt="Olympia logo"
-          loading="lazy"
-          className="w-24 sm:w-32 cursor-pointer"
-        />
+          <img
+            src={OlympiaLogo}
+            alt="Olympia logo"
+            loading="lazy"
+            className="w-24 sm:w-32 cursor-pointer"
+          />
         </Link>
       </div>
       <div className="flex w-40 items-center p-6">

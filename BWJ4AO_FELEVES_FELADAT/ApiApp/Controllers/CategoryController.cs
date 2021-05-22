@@ -22,19 +22,19 @@ namespace ApiApp.Controllers
             }
 
             [HttpDelete("{uid}")]
-            public void DeleteVideo(string uid)
+            public void DeleteCategory(string uid)
             {
                   logic.Delete(uid);
             }
 
             [HttpGet("{uid}")]
-            public Category GetVideo(string uid)
+            public Category GetCategory(string uid)
             {
                   return logic.Find(uid);
             }
 
             [HttpGet]
-            public IEnumerable<Category> GetAllVideo()
+            public IEnumerable<Category> GetAllCategory()
             {
                   return logic.List();
             }

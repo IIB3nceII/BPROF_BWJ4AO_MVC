@@ -3,7 +3,7 @@ import Pic from "../../assets/pickerbg.jpg";
 import { Button, TextField } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "../Footer";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps, useHistory } from "react-router-dom";
 import axios from "../../axios";
 import { EyeIcon } from "@heroicons/react/outline";
 import { IRootState } from "../../store/reducers";
@@ -29,6 +29,8 @@ function SignIn(props: ISignInProps) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [passwordFocused, setPasswordFocused] = useState<boolean>(false);
 
+  const history = useHistory();
+
   /*
   const sendLoginRequest = () => {
     const data = {
@@ -50,6 +52,9 @@ function SignIn(props: ISignInProps) {
 
   useEffect(() =>{
     console.log(props.account)
+    if(props.isSuccess){
+      history.push("/");
+    }
   },[props.account])
 
   const sendLoginRequest = () => props.login(userName, password);
@@ -123,10 +128,9 @@ function SignIn(props: ISignInProps) {
   );
 }
 
-// export default SignIn;
-
 const mapStateToProps = ({ authentication }: IRootState) => ({
   account: authentication.account,
+  isSuccess: authentication.loginSuccess,
 });
 
 const mapDispatchToProps = { login };
