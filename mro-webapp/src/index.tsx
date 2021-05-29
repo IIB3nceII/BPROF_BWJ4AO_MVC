@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 
 import { Provider } from "react-redux";
-import { bindActionCreators } from "redux";
 import initStore from "./store/store";
 
 const store = initStore();

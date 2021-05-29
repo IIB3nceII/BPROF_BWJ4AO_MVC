@@ -22,7 +22,10 @@ namespace Logic
 
             public void Add(Sponsor s)
             {
-                  this.sponsrepo.AddNewItem(s);
+                  if (this.sponsrepo.FindOne(s.SponsorId) == null)
+                  {
+                        this.sponsrepo.AddNewItem(s);
+                  }
             }
 
             public void Delete(string id)
