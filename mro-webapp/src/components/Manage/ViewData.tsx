@@ -45,7 +45,7 @@ const ViewData = () => {
         console.log(err);
       });
 
-      axios
+    axios
       .get("/competitor")
       .then((res) => {
         console.log(res);
@@ -55,7 +55,7 @@ const ViewData = () => {
         console.log(err);
       });
 
-      axios
+    axios
       .get("/sponsor")
       .then((res) => {
         console.log(res);
@@ -70,19 +70,31 @@ const ViewData = () => {
     <div className="flex-col">
       <div className="flex-col" style={{ minHeight: "100vh" }}>
         <section className="flex justify-evenly mb-6">
-        {categories &&
-          categories.map((q, qKey) => (
-            <div key={qKey} className="flex-col bg-green-200 rounded-full h-1/3">
-              <p>{(q.name===0 && "MrOlympia") || (q.name===1 && "ClassicPhysique") || (q.name===2 && "MensPhisyque") || (q.name===3 && "WomensBikini")}</p>
-              <p>{q.startingWeight}</p>
-              <p>{q.maximumWeight}</p>
-            </div>
-          ))}
-          </section>
+          {categories &&
+            categories.map((q, qKey) => (
+              <div
+                key={qKey}
+                className="flex-col bg-green-200 rounded-full h-1/3"
+              >
+                <p>
+                  {(q.name === 0 && "MrOlympia") ||
+                    (q.name === 1 && "ClassicPhysique") ||
+                    (q.name === 2 && "MensPhisyque") ||
+                    (q.name === 3 && "WomensBikini")}
+                </p>
+                <p>{q.startingWeight}</p>
+                <p>{q.maximumWeight}</p>
+              </div>
+            ))}
+        </section>
 
-          <section className="flex justify-evenly mb-6">
-            {competitors && competitors.map((q,qKey) => (
-              <div key={qKey} className="flex-col bg-green-200 rounded-full h-1/3">
+        <section className="flex justify-evenly mb-6">
+          {competitors &&
+            competitors.map((q, qKey) => (
+              <div
+                key={qKey}
+                className="flex-col bg-green-200 rounded-full h-1/3"
+              >
                 <p>{q.name}</p>
                 <p>{q.nationality}</p>
                 <p>{q.achivedPlace}</p>
@@ -91,10 +103,11 @@ const ViewData = () => {
                 <p>{q.gender}</p>
               </div>
             ))}
-          </section>
+        </section>
 
-          <section>
-            {sponsors && sponsors.map((q, qKey)=>(
+        <section>
+          {sponsors &&
+            sponsors.map((q, qKey) => (
               <div key={qKey}>
                 <p>{q.name}</p>
                 <p>{q.nationality}</p>
@@ -102,7 +115,7 @@ const ViewData = () => {
                 <p>{q.type}</p>
               </div>
             ))}
-          </section>
+        </section>
       </div>
 
       <Footer />
