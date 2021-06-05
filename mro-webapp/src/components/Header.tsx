@@ -51,18 +51,23 @@ function Header(props: IHeaderProps) {
         </Link>
       </div>
       <div className="flex w-40 items-center p-6">
-        <Link to="/sign-in">
-          <p className="ml-10 text-xs sm:text-lg text-gray-500 cursor-pointer hover:underline">
-            Sign in
-          </p>
-        </Link>
+        {props.isAuthenticated ? (
+          <p>Sign out</p>
+        ) : (
+          <Link to="/sign-in">
+            <p className="ml-10 text-xs sm:text-lg text-gray-500 cursor-pointer hover:underline">
+              Sign in
+            </p>
+          </Link>
+        )}
       </div>
     </div>
   );
 }
 
-const mapStateToProps = ({ appManager }: IRootState) => ({
+const mapStateToProps = ({ appManager, authentication }: IRootState) => ({
   sidebarState: appManager.showSidebar,
+  isAuthenticated: authentication.isAuthenticated,
 });
 
 const mapDispatchToProps = { setSidebarOpen, setSidebarClose };

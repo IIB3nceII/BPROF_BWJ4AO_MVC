@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Pic from "../../assets/pickerbg.jpg";
-import { Button, TextField } from "@material-ui/core";
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "../Footer";
 import { Link, RouteComponentProps, useHistory } from "react-router-dom";
@@ -24,7 +31,7 @@ export interface ISignInProps
     RouteComponentProps<{}> {}
 
 function CreateNew(props: ISignInProps) {
-  const [categoryName, setcategoryName] = useState<string>("");
+  const [categoryName, setcategoryName] = useState<number>();
   const [startingWeight, setStartingWeight] = useState<number>(0);
   const [maximumWeight, setMaximumWeight] = useState<number>(0);
 
@@ -33,17 +40,19 @@ function CreateNew(props: ISignInProps) {
   const history = useHistory();
 
   const createNew = () => {
-      const data={
-        Name:categoryName,
-        StartingWeight:startingWeight,
-        MaximumWeight:maximumWeight,
-      }
+    const data = {
+      Name: categoryName,
+      StartingWeight: startingWeight,
+      MaximumWeight: maximumWeight,
+    };
 
-      axios.post("/category", data).then((res)=>{
-          console.log(res);
+    axios
+      .post("/category", data)
+      .then((res) => {
+        console.log(res);
       })
-      .catch((err)=>{
-          console.log(err);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -55,11 +64,20 @@ function CreateNew(props: ISignInProps) {
           <div className="flex-col w-1/2 my-24 items-center">
             <div className="w-full px-12 mt-48">
               <ThemeProvider theme={theme}>
-                <TextField
-                  label="Name of the category"
-                  style={{ width: "100%" }}
-                  onChange={(e) => setcategoryName(e.target.value)}
-                />
+                <FormControl className="w-full">
+                  <InputLabel id="demo-simple-select-label">Name of the category</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={categoryName}
+                    onChange={(e)=>setcategoryName(e.target.value as number)}
+                  >
+                    <MenuItem value={0}>MrOlympia</MenuItem>
+                    <MenuItem value={1}>ClassicPhysique</MenuItem>
+                    <MenuItem value={2}>MensPhisyque</MenuItem>
+                    <MenuItem value={3}>WomensBikini</MenuItem>
+                  </Select>
+                </FormControl>
               </ThemeProvider>
             </div>
 
@@ -92,7 +110,7 @@ function CreateNew(props: ISignInProps) {
                   style={{ outline: "none" }}
                   onClick={createNew}
                 >
-                  Sign In
+                  Crate
                 </Button>
               </ThemeProvider>
             </div>

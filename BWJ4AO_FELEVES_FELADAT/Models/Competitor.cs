@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-
+using System.Text.Json.Serialization;
 
 namespace Models
 {
@@ -27,8 +27,10 @@ namespace Models
             // [Range(1,30)]
             public int AchivedPlace { get; set; }
             [NotMapped]
+            [JsonIgnore]
             public virtual Category Category { get; set; }
             [NotMapped]
+            [JsonIgnore]
             public virtual ICollection<Sponsor> Sponsors { get; set; }
             public string CategoryId { get; set; }
 
