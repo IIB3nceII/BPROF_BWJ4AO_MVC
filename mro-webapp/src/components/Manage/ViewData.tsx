@@ -1,5 +1,7 @@
 /* eslint-disable no-restricted-globals */
+import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "../../axios";
 import Footer from "../Footer";
 import DataCard from "./ManageComponents/DataCard";
@@ -13,6 +15,7 @@ export interface ICategory {
 }
 
 export interface ICompetitor {
+  competitorId: string;
   number: number;
   name: string;
   nationality: string;
@@ -23,6 +26,7 @@ export interface ICompetitor {
 }
 
 export interface ISponsor {
+  sponsorId: string;
   name: string;
   nationality: string;
   placeholder: string;
@@ -38,7 +42,6 @@ const ViewData = () => {
     axios
       .get("/category")
       .then((res) => {
-        console.log(res);
         setCategories(res.data);
       })
       .catch((err) => {
@@ -48,7 +51,6 @@ const ViewData = () => {
     axios
       .get("/competitor")
       .then((res) => {
-        console.log(res);
         setCompetitiors(res.data);
       })
       .catch((err) => {
@@ -58,7 +60,6 @@ const ViewData = () => {
     axios
       .get("/sponsor")
       .then((res) => {
-        console.log(res);
         setSponsors(res.data);
       })
       .catch((err) => {
@@ -66,24 +67,63 @@ const ViewData = () => {
       });
   }, []);
 
+  const handleDeleteCategory = (id: string) => {
+    axios
+      .delete(`/category/${id}`)
+      .then((res) => {
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleDeleteCompetitor = (id: string) => {
+    axios
+      .delete(`/competitor/${id}`)
+      .then((res) => {
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleDeleteSponsor = (id: string) => {
+    axios
+      .delete(`/sponsor/${id}`)
+      .then((res) => {
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
-    <div className="flex-col">
+    <div className="flex-col bg-gray-50">
       <div className="flex-col" style={{ minHeight: "100vh" }}>
         <section className="flex justify-evenly mb-6">
           {categories &&
             categories.map((q, qKey) => (
               <div
                 key={qKey}
-                className="flex-col bg-green-200 rounded-full h-1/3"
+                className="flex-col bg-red-500 rounded-lg h-40 w-32 items-center text-center text-white font-bold"
               >
-                <p>
+                <p className="mt-6">
                   {(q.name === 0 && "MrOlympia") ||
                     (q.name === 1 && "ClassicPhysique") ||
                     (q.name === 2 && "MensPhisyque") ||
                     (q.name === 3 && "WomensBikini")}
                 </p>
-                <p>{q.startingWeight}</p>
-                <p>{q.maximumWeight}</p>
+                <p>{q.startingWeight}kg</p>
+                <p>{q.maximumWeight}kg</p>
+
+                <div className="flex">
+                  <Link to={`/editcategory/${q?.categoryId}`}>
+                    <Button>Edit</Button>
+                  </Link>
+                  <Button onClick={() => handleDeleteCategory(q?.categoryId)}>
+                    Delete
+                  </Button>
+                </div>
               </div>
             ))}
         </section>
@@ -93,26 +133,49 @@ const ViewData = () => {
             competitors.map((q, qKey) => (
               <div
                 key={qKey}
-                className="flex-col bg-green-200 rounded-full h-1/3"
+                className="flex-col bg-red-500 rounded-lg h-48 w-32 items-center text-center text-white font-bold"
               >
-                <p>{q.name}</p>
+                <p className="mt-6">{q.name}</p>
                 <p>{q.nationality}</p>
                 <p>{q.achivedPlace}</p>
-                <p>{q.height}</p>
-                <p>{q.weight}</p>
+                <p>{q.height}cm</p>
+                <p>{q.weight}kg</p>
                 <p>{q.gender}</p>
+
+                <div className="flex">
+                  <Link to={`/editcompetitor/${q?.competitorId}`}>
+                    <Button>Edit</Button>
+                  </Link>
+                  <Button
+                    onClick={() => handleDeleteCompetitor(q?.competitorId)}
+                  >
+                    Delete
+                  </Button>
+                </div>
               </div>
             ))}
         </section>
 
-        <section>
+        <section className="flex justify-evenly mb-6">
           {sponsors &&
             sponsors.map((q, qKey) => (
-              <div key={qKey}>
-                <p>{q.name}</p>
+              <div
+                key={qKey}
+                className="flex-col bg-red-500 rounded-lg h-48 w-32 items-center text-center text-white font-bold"
+              >
+                <p className="mt-6">{q.name}</p>
                 <p>{q.nationality}</p>
                 <p>{q.placeholder}</p>
                 <p>{q.type}</p>
+
+                <div className="flex">
+                  <Link to={`/editsponsor/${q?.sponsorId}`}>
+                    <Button>Edit</Button>
+                  </Link>
+                  <Button onClick={() => handleDeleteSponsor(q?.sponsorId)}>
+                    Delete
+                  </Button>
+                </div>
               </div>
             ))}
         </section>

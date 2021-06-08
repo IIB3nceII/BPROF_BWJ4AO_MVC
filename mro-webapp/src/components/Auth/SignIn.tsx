@@ -31,27 +31,7 @@ function SignIn(props: ISignInProps) {
 
   const history = useHistory();
 
-  /*
-  const sendLoginRequest = () => {
-    const data = {
-      UserName: userName,
-      Password: password,
-    };
-    console.log(data)
-
-    axios
-      .put("/Auth", data)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-  */
-
   useEffect(() =>{
-    console.log(props.account)
     if(props.isSuccess){
       history.push("/");
     }
