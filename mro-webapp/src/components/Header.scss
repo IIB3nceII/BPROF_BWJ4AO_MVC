@@ -1,0 +1,19 @@
+.sidebar {
+  width: 17.5rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -26rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  inset-inline: 1000;
+  transition: all 650ms ease-in-out;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.menu:hover > .sidebar {
+  left: 0;
+}

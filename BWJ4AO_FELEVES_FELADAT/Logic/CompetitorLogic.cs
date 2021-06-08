@@ -20,7 +20,10 @@ namespace Logic
 
             public void Add(Competitor c)
             {
-                  this.comprepo.AddNewItem(c);
+                  if (this.comprepo.FindOne(c.CompetitorId) == null)
+                  {
+                        this.comprepo.AddNewItem(c);
+                  }
             }
 
             public void Delete(string id)

@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using System;
 
 namespace Data
 {
-      public class CompetitorDbContext : DbContext
+      public class CompetitorDbContext : IdentityDbContext<IdentityUser>
       {
             public DbSet<Competitor> Competitors { get; set; }
             public DbSet<Category> Categories { get; set; }
@@ -26,7 +28,8 @@ namespace Data
                   {
                         optionsBuilder.
                             UseLazyLoadingProxies().
-                            UseSqlServer(@"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\CompetitorDB.mdf;integrated security=True;MultipleActiveResultSets=True");
+                            // UseSqlServer(@"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\CompetitorDB.mdf;integrated security=True;MultipleActiveResultSets=True");
+                            UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MrODb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                   }
             }
 
@@ -34,6 +37,52 @@ namespace Data
             protected override void OnModelCreating(ModelBuilder modelbuilder)
             {
                   base.OnModelCreating(modelbuilder);
+
+                  modelbuilder.Entity<IdentityRole>().HasData(
+    new { Id = "341743f0-asd2–42de-afbf-59kmkkmk72cf6", Name = "Admin", NormalizedName = "ADMIN" },
+    new { Id = "341743f0-dee2–42de-bbbb-59kmkkmk72cf6", Name = "Customer", NormalizedName = "CUSTOMER" }
+);
+
+                  var appUser = new IdentityUser
+                  {
+                        Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
+                        Email = "kathi.bela@nik.uni-obuda.hu",
+                        NormalizedEmail = "kathi.bela@nik.uni-obuda.hu",
+                        EmailConfirmed = true,
+                        UserName = "kathi.bela@nik.uni-obuda.hu",
+                        NormalizedUserName = "kathi.bela@nik.uni-obuda.hu",
+                        SecurityStamp = string.Empty
+                  };
+
+                  var appUser2 = new IdentityUser
+                  {
+                        Id = "e2174cf0–9412–4cfe-afbf-59f706d72cf6",
+                        Email = "bohos.kornel@nik.uni-obuda.hu",
+                        NormalizedEmail = "bohos.kornel@nik.uni-obuda.hu",
+                        EmailConfirmed = true,
+                        UserName = "bohos.kornel@nik.uni-obuda.hu",
+                        NormalizedUserName = "bohos.kornel@nik.uni-obuda.hu",
+                        SecurityStamp = string.Empty
+                  };
+
+                  appUser.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "EnnyitTudszBameg!");
+                  appUser2.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "Szeretemacicakat123!");
+
+
+                  modelbuilder.Entity<IdentityUser>().HasData(appUser);
+                  modelbuilder.Entity<IdentityUser>().HasData(appUser2);
+
+                  modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+                  {
+                        RoleId = "341743f0-asd2–42de-afbf-59kmkkmk72cf6",
+                        UserId = "02174cf0–9412–4cfe-afbf-59f706d72cf6"
+                  });
+
+                  modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+                  {
+                        RoleId = "341743f0-dee2–42de-bbbb-59kmkkmk72cf6",
+                        UserId = "e2174cf0–9412–4cfe-afbf-59f706d72cf6"
+                  });
 
                   modelbuilder.Entity<Competitor>(entity =>
                   {

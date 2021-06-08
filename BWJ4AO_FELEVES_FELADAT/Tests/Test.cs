@@ -71,7 +71,7 @@ namespace Tests
             [Test]
             public void TestAddNewCategory()
             {
-                  CategoryLogic c = new CategoryLogic(this.categrepo.Object);
+                  CategoryLogic c = new CategoryLogic(this.categrepo.Object, this.comprepo.Object, this.sponsorrepo.Object);
 
                   Category newc = new Category()
                   {
@@ -91,7 +91,7 @@ namespace Tests
             [Test]
             public void DeleteCategory()
             {
-                  CategoryLogic c = new CategoryLogic(this.categrepo.Object);
+                  CategoryLogic c = new CategoryLogic(this.categrepo.Object, this.comprepo.Object, this.sponsorrepo.Object);
                   Category newc = new Category()
                   {
                         CategoryId = Guid.NewGuid().ToString(),
@@ -108,7 +108,7 @@ namespace Tests
             [Test]
             public void UpdateCategory()
             {
-                  CategoryLogic c = new CategoryLogic(this.categrepo.Object);
+                  CategoryLogic c = new CategoryLogic(this.categrepo.Object, this.comprepo.Object, this.sponsorrepo.Object);
                   Category newc = new Category()
                   {
                         CategoryId = Guid.NewGuid().ToString(),
@@ -125,7 +125,7 @@ namespace Tests
             [Test]
             public void ListAllCategory()
             {
-                  CategoryLogic c = new CategoryLogic(this.categrepo.Object);
+                  CategoryLogic c = new CategoryLogic(this.categrepo.Object, this.comprepo.Object, this.sponsorrepo.Object);
 
                   List<Category> newc = new List<Category>()
                   {
@@ -156,7 +156,7 @@ namespace Tests
             [Test]
             public void ListOneCategory()
             {
-                  CategoryLogic c = new CategoryLogic(this.categrepo.Object);
+                  CategoryLogic c = new CategoryLogic(this.categrepo.Object, this.comprepo.Object, this.sponsorrepo.Object);
 
                   List<Category> newc = new List<Category>()
                   {
@@ -185,7 +185,7 @@ namespace Tests
             [Test]
             public void BiggestAverageWeightCategory()
             {
-                  CategoryLogic c = new CategoryLogic(this.categrepo.Object);
+                  CategoryLogic c = new CategoryLogic(this.categrepo.Object, this.comprepo.Object, this.sponsorrepo.Object);
                   CompetitorLogic com = new CompetitorLogic(this.comprepo.Object);
 
                   StatLogic s = new StatLogic(this.categrepo.Object, this.comprepo.Object);
@@ -225,7 +225,7 @@ namespace Tests
             [Test]
             public void HighestCompetitorCategory()
             {
-                  CategoryLogic c = new CategoryLogic(this.categrepo.Object);
+                  CategoryLogic c = new CategoryLogic(this.categrepo.Object, this.comprepo.Object, this.sponsorrepo.Object);
                   CompetitorLogic com = new CompetitorLogic(this.comprepo.Object);
 
                   StatLogic s = new StatLogic(this.categrepo.Object, this.comprepo.Object);
@@ -265,7 +265,7 @@ namespace Tests
             [Test]
             public void CategoryWithHighestNumberOfUSACompetitors()
             {
-                  CategoryLogic c = new CategoryLogic(this.categrepo.Object);
+                  CategoryLogic c = new CategoryLogic(this.categrepo.Object, this.comprepo.Object, this.sponsorrepo.Object);
                   CompetitorLogic com = new CompetitorLogic(this.comprepo.Object);
 
                   StatLogic s = new StatLogic(this.categrepo.Object, this.comprepo.Object);

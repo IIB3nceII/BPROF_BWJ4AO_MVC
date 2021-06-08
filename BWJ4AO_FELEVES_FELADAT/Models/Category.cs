@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Models
 {
@@ -15,12 +16,13 @@ namespace Models
             [Key]
             [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
             public string CategoryId { get; set; }
-            [Required]
+            // [Required]
             public CategoryType Name { get; set; }
-            [Required]
+            // [Required]
             public int StartingWeight { get; set; }
-            [Required]
+            // [Required]
             public int MaximumWeight { get; set; }
+            [JsonIgnore]
             public virtual ICollection<Competitor> Competitors { get; set; }
       }
 }
