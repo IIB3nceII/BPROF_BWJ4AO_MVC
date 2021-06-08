@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d0a82f8b.chunk.css",
+    "main.js": "/static/js/main.81dac31b.chunk.js",
+    "main.js.map": "/static/js/main.81dac31b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c10046ae.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c10046ae.js.map",
+    "static/js/2.23c15879.chunk.js": "/static/js/2.23c15879.chunk.js",
+    "static/js/2.23c15879.chunk.js.map": "/static/js/2.23c15879.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.d0a82f8b.chunk.css.map": "/static/css/main.d0a82f8b.chunk.css.map",
+    "static/js/2.23c15879.chunk.js.LICENSE.txt": "/static/js/2.23c15879.chunk.js.LICENSE.txt",
+    "static/media/2020-Olympia-bg.c012c217.jpg": "/static/media/2020-Olympia-bg.c012c217.jpg",
+    "static/media/ArnoldProfilePic.09631b48.jpg": "/static/media/ArnoldProfilePic.09631b48.jpg",
+    "static/media/arnold01.283e75d3.jpg": "/static/media/arnold01.283e75d3.jpg",
+    "static/media/brendonprofp.a46c10e2.jpg": "/static/media/brendonprofp.a46c10e2.jpg",
+    "static/media/classic01.5ab6c0d5.jpg": "/static/media/classic01.5ab6c0d5.jpg",
+    "static/media/mens01.f74a4055.jpg": "/static/media/mens01.f74a4055.jpg",
+    "static/media/mop01.9c4785ad.jpg": "/static/media/mop01.9c4785ad.jpg",
+    "static/media/olympialogo1.ef1c5f6a.png": "/static/media/olympialogo1.ef1c5f6a.png",
+    "static/media/pickerbg.55163799.jpg": "/static/media/pickerbg.55163799.jpg",
+    "static/media/wmbikini01.62fc79fa.jpg": "/static/media/wmbikini01.62fc79fa.jpg",
+    "static/media/wmsp01.f4ddc3ab.jpg": "/static/media/wmsp01.f4ddc3ab.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c10046ae.js",
+    "static/js/2.23c15879.chunk.js",
+    "static/css/main.d0a82f8b.chunk.css",
+    "static/js/main.81dac31b.chunk.js"
+  ]
+}
