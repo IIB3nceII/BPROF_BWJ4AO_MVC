@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import axios from "../../axios";
 import Footer from "../Footer";
+import Pic from "../../assets/pickerbg.jpg";
 
 const theme = createMuiTheme({
   palette: {
@@ -27,7 +28,7 @@ export interface ISponsor {
   Name: string;
   Nationality: string;
   Placeholder: string;
-  Type:string;
+  Type: string;
 }
 
 function EditSponsor({ match }: any) {
@@ -35,7 +36,7 @@ function EditSponsor({ match }: any) {
 
   const authentication = useSelector((state: any) => state.authentication);
 
-  const history=useHistory();
+  const history = useHistory();
 
   const headers = {
     Authorization: "Bearer " + authentication.account?.token,
@@ -95,7 +96,7 @@ function EditSponsor({ match }: any) {
     axios
       .put(`/sponsor/${sponsor?.SponsorId}`, sponsor, { headers: headers })
       .then((res) => {
-        history.push("/view")
+        history.push("/view");
       })
       .catch((err) => {
         console.log(err);
@@ -103,62 +104,72 @@ function EditSponsor({ match }: any) {
   };
 
   return (
-    <div>
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Sponsor Name"
-            type="text"
-            style={{ width: "100%" }}
-            onChange={(e) => updateteName(e.target.value)}
-          />
-        </ThemeProvider>
-      </div>
+    <div className="flex-col bg-gray-50" style={{ height: "90vh" }}>
+      <div className="flex-col h-full">
+        <div
+          className="w-1/2 bg-local bg-no-repeat bg-cover"
+          style={{ backgroundImage: `url('${Pic}')` }}
+        >
+          <div className="h-full w-full bg-red-900 bg-opacity-60"></div>
+        </div>
 
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Sponsor Nationality"
-            type="text"
-            style={{ width: "100%" }}
-            onChange={(e) => updateNationality(e.target.value)}
-          />
-        </ThemeProvider>
-      </div>
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Sponsor Name"
+              type="text"
+              style={{ width: "100%" }}
+              onChange={(e) => updateteName(e.target.value)}
+            />
+          </ThemeProvider>
+        </div>
 
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Sponsor Placeholder"
-            type="text"
-            style={{ width: "100%" }}
-            onChange={(e) => updatePlaceholder(e.target.value)}
-          />
-        </ThemeProvider>
-      </div>
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Sponsor Nationality"
+              type="text"
+              style={{ width: "100%" }}
+              onChange={(e) => updateNationality(e.target.value)}
+            />
+          </ThemeProvider>
+        </div>
 
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Sponsor Type"
-            type="text"
-            style={{ width: "100%" }}
-            onChange={(e) => updateType(e.target.value)}
-          />
-        </ThemeProvider>
-      </div>
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Sponsor Placeholder"
+              type="text"
+              style={{ width: "100%" }}
+              onChange={(e) => updatePlaceholder(e.target.value)}
+            />
+          </ThemeProvider>
+        </div>
 
-      <div className="w-full px-12 mt-12 items-center text-center">
-        <ThemeProvider theme={theme}>
-          <Button
-            variant="outlined"
-            style={{ outline: "none" }}
-            onClick={editSponsor}
-          >
-            Edit
-          </Button>
-        </ThemeProvider>
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Sponsor Type"
+              type="text"
+              style={{ width: "100%" }}
+              onChange={(e) => updateType(e.target.value)}
+            />
+          </ThemeProvider>
+        </div>
+
+        <div className="w-full px-12 mt-12 items-center text-center">
+          <ThemeProvider theme={theme}>
+            <Button
+              variant="outlined"
+              style={{ outline: "none" }}
+              onClick={editSponsor}
+            >
+              Edit
+            </Button>
+          </ThemeProvider>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

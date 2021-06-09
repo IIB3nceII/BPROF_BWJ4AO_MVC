@@ -37,7 +37,7 @@ export interface ISponsor {
 
 export interface IViewDataProps extends StateProps, RouteComponentProps<{}> {}
 
-const ViewData = (props:IViewDataProps) => {
+const ViewData = (props: IViewDataProps) => {
   const [categories, setCategories] = useState([] as ICategory[]);
   const [competitors, setCompetitiors] = useState([] as ICompetitor[]);
   const [sponsors, setSponsors] = useState([] as ISponsor[]);
@@ -105,6 +105,7 @@ const ViewData = (props:IViewDataProps) => {
   return (
     <div className="flex-col bg-gray-50">
       <div className="flex-col" style={{ minHeight: "100vh" }}>
+        <h3 className="text-3xl ml-14 mb-6">Categories:</h3>
         <section className="flex justify-evenly mb-6">
           {categories &&
             categories.map((q, qKey) => (
@@ -123,9 +124,9 @@ const ViewData = (props:IViewDataProps) => {
 
                 <div className="flex">
                   <Link to={`/editcategory/${q?.categoryId}`}>
-                    <Button>Edit</Button>
+                    <Button style={{color:"white"}}>Edit</Button>
                   </Link>
-                  <Button onClick={() => handleDeleteCategory(q?.categoryId)}>
+                  <Button onClick={() => handleDeleteCategory(q?.categoryId)} style={{color:"white"}}>
                     Delete
                   </Button>
                 </div>
@@ -133,6 +134,7 @@ const ViewData = (props:IViewDataProps) => {
             ))}
         </section>
 
+        <h3 className="text-3xl ml-14 mb-6">Competitors:</h3>
         <section className="flex justify-evenly mb-6">
           {competitors &&
             competitors.map((q, qKey) => (
@@ -148,10 +150,10 @@ const ViewData = (props:IViewDataProps) => {
 
                 <div className="flex">
                   <Link to={`/editcompetitor/${q?.competitorId}`}>
-                    <Button>Edit</Button>
+                    <Button style={{color:"white"}}>Edit</Button>
                   </Link>
                   <Button
-                    onClick={() => handleDeleteCompetitor(q?.competitorId)}
+                    onClick={() => handleDeleteCompetitor(q?.competitorId)} style={{color:"white"}}
                   >
                     Delete
                   </Button>
@@ -160,6 +162,7 @@ const ViewData = (props:IViewDataProps) => {
             ))}
         </section>
 
+        <h3 className="text-3xl ml-14 mb-6">Sponsors:</h3>
         <section className="flex justify-evenly mb-6">
           {sponsors &&
             sponsors.map((q, qKey) => (
@@ -174,9 +177,9 @@ const ViewData = (props:IViewDataProps) => {
 
                 <div className="flex">
                   <Link to={`/editsponsor/${q?.sponsorId}`}>
-                    <Button>Edit</Button>
+                    <Button style={{color:"white"}}>Edit</Button>
                   </Link>
-                  <Button onClick={() => handleDeleteSponsor(q?.sponsorId)}>
+                  <Button onClick={() => handleDeleteSponsor(q?.sponsorId)} style={{color:"white"}}>
                     Delete
                   </Button>
                 </div>

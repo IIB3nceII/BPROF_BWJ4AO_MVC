@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import axios from "../../axios";
 import Footer from "../Footer";
+import Pic from "../../assets/pickerbg.jpg";
 
 const theme = createMuiTheme({
   palette: {
@@ -128,7 +129,9 @@ function EditCompetitor({ match }: any) {
 
   const editCompetitor = () => {
     axios
-      .put(`/competitor/${competitor?.CompetitorId}`, competitor, { headers: headers })
+      .put(`/competitor/${competitor?.CompetitorId}`, competitor, {
+        headers: headers,
+      })
       .then((res) => {
         history.push("/view");
       })
@@ -138,101 +141,111 @@ function EditCompetitor({ match }: any) {
   };
 
   return (
-    <div>
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Name"
-            type="text"
-            style={{ width: "100%" }}
-            onChange={(e) => updateteName(e.target.value)}
-          />
-        </ThemeProvider>
-      </div>
+    <div className="flex-col bg-gray-50" style={{ height: "90vh" }}>
+      <div className="flex-col h-full">
+        <div
+          className="w-1/2 bg-local bg-no-repeat bg-cover"
+          style={{ backgroundImage: `url('${Pic}')` }}
+        >
+          <div className="h-full w-full bg-red-900 bg-opacity-60"></div>
+        </div>
 
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Number"
-            type="number"
-            style={{ width: "100%" }}
-            onChange={(e) => updateNumber(Number(e.target.value))}
-          />
-        </ThemeProvider>
-      </div>
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Name"
+              type="text"
+              style={{ width: "100%" }}
+              onChange={(e) => updateteName(e.target.value)}
+            />
+          </ThemeProvider>
+        </div>
 
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Nationality"
-            type="text"
-            style={{ width: "100%" }}
-            onChange={(e) => updateNationality(e.target.value)}
-          />
-        </ThemeProvider>
-      </div>
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Number"
+              type="number"
+              style={{ width: "100%" }}
+              onChange={(e) => updateNumber(Number(e.target.value))}
+            />
+          </ThemeProvider>
+        </div>
 
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <FormControl className="w-full">
-            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              onChange={(e) => updateGender(e.target.value as number)}
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Nationality"
+              type="text"
+              style={{ width: "100%" }}
+              onChange={(e) => updateNationality(e.target.value)}
+            />
+          </ThemeProvider>
+        </div>
+
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <FormControl className="w-full">
+              <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                onChange={(e) => updateGender(e.target.value as number)}
+              >
+                <MenuItem value={0}>Male</MenuItem>
+                <MenuItem value={1}>Female</MenuItem>
+                <MenuItem value={2}>Other</MenuItem>
+              </Select>
+            </FormControl>
+          </ThemeProvider>
+        </div>
+
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Height"
+              type="number"
+              style={{ width: "100%" }}
+              onChange={(e) => updateHeight(e.target.value)}
+            />
+          </ThemeProvider>
+        </div>
+
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Weight"
+              type="number"
+              style={{ width: "100%" }}
+              onChange={(e) => updateWeight(Number(e.target.value))}
+            />
+          </ThemeProvider>
+        </div>
+
+        <div className="relative w-full px-12 mt-12">
+          <ThemeProvider theme={theme}>
+            <TextField
+              label="Achived Place"
+              type="number"
+              style={{ width: "100%" }}
+              onChange={(e) => updateAchivedPlace(Number(e.target.value))}
+            />
+          </ThemeProvider>
+        </div>
+
+        <div className="w-full px-12 mt-12 items-center text-center">
+          <ThemeProvider theme={theme}>
+            <Button
+              variant="outlined"
+              style={{ outline: "none" }}
+              onClick={editCompetitor}
             >
-              <MenuItem value={0}>Male</MenuItem>
-              <MenuItem value={1}>Female</MenuItem>
-              <MenuItem value={2}>Other</MenuItem>
-            </Select>
-          </FormControl>
-        </ThemeProvider>
+              Edit
+            </Button>
+          </ThemeProvider>
+        </div>
       </div>
-
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Height"
-            type="number"
-            style={{ width: "100%" }}
-            onChange={(e) => updateHeight(e.target.value)}
-          />
-        </ThemeProvider>
-      </div>
-
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Weight"
-            type="number"
-            style={{ width: "100%" }}
-            onChange={(e) => updateWeight(Number(e.target.value))}
-          />
-        </ThemeProvider>
-      </div>
-
-      <div className="relative w-full px-12 mt-12">
-        <ThemeProvider theme={theme}>
-          <TextField
-            label="Achived Place"
-            type="number"
-            style={{ width: "100%" }}
-            onChange={(e) => updateAchivedPlace(Number(e.target.value))}
-          />
-        </ThemeProvider>
-      </div>
-
-      <div className="w-full px-12 mt-12 items-center text-center">
-        <ThemeProvider theme={theme}>
-          <Button
-            variant="outlined"
-            style={{ outline: "none" }}
-            onClick={editCompetitor}
-          >
-            Edit
-          </Button>
-        </ThemeProvider>
-      </div>
+      <Footer />
     </div>
   );
 }
