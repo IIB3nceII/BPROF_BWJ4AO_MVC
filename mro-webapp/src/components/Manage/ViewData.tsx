@@ -1,8 +1,10 @@
 /* eslint-disable no-restricted-globals */
 import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Link, RouteComponentProps } from "react-router-dom";
 import axios from "../../axios";
+import { IRootState } from "../../store/reducers";
 import Footer from "../Footer";
 import DataCard from "./ManageComponents/DataCard";
 
@@ -33,14 +35,20 @@ export interface ISponsor {
   type: string;
 }
 
-const ViewData = () => {
+export interface IViewDataProps extends StateProps, RouteComponentProps<{}> {}
+
+const ViewData = (props:IViewDataProps) => {
   const [categories, setCategories] = useState([] as ICategory[]);
   const [competitors, setCompetitiors] = useState([] as ICompetitor[]);
   const [sponsors, setSponsors] = useState([] as ISponsor[]);
 
+  const headers = {
+    Authorization: "Bearer " + props.account?.token,
+  };
+
   useEffect(() => {
     axios
-      .get("/category")
+      .get("/category", { headers: headers })
       .then((res) => {
         setCategories(res.data);
       })
@@ -49,7 +57,7 @@ const ViewData = () => {
       });
 
     axios
-      .get("/competitor")
+      .get("/competitor", { headers: headers })
       .then((res) => {
         setCompetitiors(res.data);
       })
@@ -58,7 +66,7 @@ const ViewData = () => {
       });
 
     axios
-      .get("/sponsor")
+      .get("/sponsor", { headers: headers })
       .then((res) => {
         setSponsors(res.data);
       })
@@ -69,9 +77,8 @@ const ViewData = () => {
 
   const handleDeleteCategory = (id: string) => {
     axios
-      .delete(`/category/${id}`)
-      .then((res) => {
-      })
+      .delete(`/category/${id}`, { headers: headers })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
       });
@@ -79,9 +86,8 @@ const ViewData = () => {
 
   const handleDeleteCompetitor = (id: string) => {
     axios
-      .delete(`/competitor/${id}`)
-      .then((res) => {
-      })
+      .delete(`/competitor/${id}`, { headers: headers })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
       });
@@ -89,9 +95,8 @@ const ViewData = () => {
 
   const handleDeleteSponsor = (id: string) => {
     axios
-      .delete(`/sponsor/${id}`)
-      .then((res) => {
-      })
+      .delete(`/sponsor/${id}`, { headers: headers })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
       });
@@ -140,7 +145,6 @@ const ViewData = () => {
                 <p>{q.achivedPlace}</p>
                 <p>{q.height}cm</p>
                 <p>{q.weight}kg</p>
-                <p>{q.gender}</p>
 
                 <div className="flex">
                   <Link to={`/editcompetitor/${q?.competitorId}`}>
@@ -186,4 +190,11 @@ const ViewData = () => {
   );
 };
 
-export default ViewData;
+const mapStateToProps = ({ authentication }: IRootState) => ({
+  account: authentication.account,
+  isSuccess: authentication.loginSuccess,
+});
+
+type StateProps = ReturnType<typeof mapStateToProps>;
+
+export default connect(mapStateToProps)(ViewData);

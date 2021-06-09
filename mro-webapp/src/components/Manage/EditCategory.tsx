@@ -9,6 +9,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import axios from "../../axios";
 import Footer from "../Footer";
@@ -31,11 +32,17 @@ export interface ICategory {
 function Edit({ match }: any) {
   const [category, setCategory] = useState<ICategory>();
 
+  const authentication = useSelector((state: any) => state.authentication);
+
   const history = useHistory();
+
+  const headers = {
+    Authorization: "Bearer " + authentication.account?.token,
+  };
 
   useEffect(() => {
     axios
-      .get(`/category/${match.params.id}`)
+      .get(`/category/${match.params.id}`, { headers: headers })
       .then((res) => {
         const newCategory = {
           CategoryId: res.data.categoryId as string,
@@ -76,7 +83,7 @@ function Edit({ match }: any) {
 
   const editCategory = () => {
     axios
-      .put(`/category/${category?.CategoryId}`, category)
+      .put(`/category/${category?.CategoryId}`, category, { headers: headers })
       .then((res) => {
         history.push("/view");
       })

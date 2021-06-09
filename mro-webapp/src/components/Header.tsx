@@ -6,13 +6,35 @@ import { connect } from "react-redux";
 import { IRootState } from "../store/reducers";
 import { setSidebarOpen, setSidebarClose } from "../store/reducers/appManager";
 import { Link } from "react-router-dom";
+import { logout } from "../store/reducers/authentication";
+import axios from "../axios";
 
 export interface IHeaderProps extends StateProps, DispatchProps {}
 
 function Header(props: IHeaderProps) {
+  const sendLogoutRequest = () => props.logout();
+
+  const headers = {
+    Authorization: "Bearer " + props.account?.token,
+  };
+
+  const callEdit = () => {
+    axios
+      .get("/Edit", { headers: headers })
+      .then((res) => {
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="sticky top-0 bg-gray-50 h-24 flex justify-between ms:justify-between">
-      <div className="menu flex w-40 p-6 items-center">
+      <div
+        className={`${
+          props.isAuthenticated && "menu"
+        } flex w-40 p-6 items-center`}
+      >
         <MenuIcon className="h-10 text-gray-500 cursor-pointer transition duration-100 transform" />
 
         <div className="sidebar bg-gray-50">
@@ -23,19 +45,14 @@ function Header(props: IHeaderProps) {
               </Link>
             </li>
             <li>
-              <Link to="/edit">
-                <p className="cursor-pointer">Edit</p>
-              </Link>
-            </li>
-            <li>
               <Link to="/view">
                 <p className="cursor-pointer">View</p>
               </Link>
             </li>
             <li className="mt-12 text-base font-thin">
-              <Link to="">
-                <p className="cursor-pointer">+ Info</p>
-              </Link>
+              <p className="cursor-pointer" onClick={callEdit}>
+                + Edit
+              </p>
             </li>
           </ul>
         </div>
@@ -52,7 +69,12 @@ function Header(props: IHeaderProps) {
       </div>
       <div className="flex w-40 items-center p-6">
         {props.isAuthenticated ? (
-          <p>Sign out</p>
+          <p
+            className="ml-10 text-xs sm:text-lg text-gray-500 cursor-pointer hover:underline"
+            onClick={sendLogoutRequest}
+          >
+            Sign out
+          </p>
         ) : (
           <Link to="/sign-in">
             <p className="ml-10 text-xs sm:text-lg text-gray-500 cursor-pointer hover:underline">
@@ -68,9 +90,10 @@ function Header(props: IHeaderProps) {
 const mapStateToProps = ({ appManager, authentication }: IRootState) => ({
   sidebarState: appManager.showSidebar,
   isAuthenticated: authentication.isAuthenticated,
+  account: authentication.account,
 });
 
-const mapDispatchToProps = { setSidebarOpen, setSidebarClose };
+const mapDispatchToProps = { setSidebarOpen, setSidebarClose, logout };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;

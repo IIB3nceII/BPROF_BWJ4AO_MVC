@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApiApp.Controllers
 {
-      // [Authorize]
+      [Authorize]
       [ApiController]
       [Route("{controller}")]
       public class EditController : ControllerBase

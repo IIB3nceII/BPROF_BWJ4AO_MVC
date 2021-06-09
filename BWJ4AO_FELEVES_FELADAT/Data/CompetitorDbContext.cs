@@ -29,7 +29,7 @@ namespace Data
                         optionsBuilder.
                             UseLazyLoadingProxies().
                             // UseSqlServer(@"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\CompetitorDB.mdf;integrated security=True;MultipleActiveResultSets=True");
-                            UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MrODb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                            UseSqlServer(@"Server=tcp:benceandroid.database.windows.net,1433;Initial Catalog=androiddb;Persist Security Info=False;User ID=bence;Password=A123456!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", b => b.MigrationsAssembly("ApiApp"));
                   }
             }
 

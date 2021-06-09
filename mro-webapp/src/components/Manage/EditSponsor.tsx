@@ -9,6 +9,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import axios from "../../axios";
 import Footer from "../Footer";
@@ -32,11 +33,17 @@ export interface ISponsor {
 function EditSponsor({ match }: any) {
   const [sponsor, setSponsor] = useState<ISponsor>();
 
+  const authentication = useSelector((state: any) => state.authentication);
+
   const history=useHistory();
+
+  const headers = {
+    Authorization: "Bearer " + authentication.account?.token,
+  };
 
   useEffect(() => {
     axios
-      .get(`/sponsor/${match.params.id}`)
+      .get(`/sponsor/${match.params.id}`, { headers: headers })
       .then((res) => {
         const newCategory = {
           SponsorId: res.data.sponsorId as string,
@@ -86,7 +93,7 @@ function EditSponsor({ match }: any) {
 
   const editSponsor = () => {
     axios
-      .put(`/sponsor/${sponsor?.SponsorId}`, sponsor)
+      .put(`/sponsor/${sponsor?.SponsorId}`, sponsor, { headers: headers })
       .then((res) => {
         history.push("/view")
       })

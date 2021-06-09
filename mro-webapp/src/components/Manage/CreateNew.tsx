@@ -75,6 +75,10 @@ function CreateNew(props: ISignInProps) {
     setSponsorType("");
   }
 
+  const headers = {
+    Authorization: "Bearer " + props.account?.token,
+  };
+
   const createNew = () => {
     const data = {
       Name: categoryName,
@@ -83,7 +87,7 @@ function CreateNew(props: ISignInProps) {
     };
 
     axios
-      .post("/category", data)
+      .post("/category", data, { headers: headers })
       .then((res) => {
         reset();
       })
@@ -104,7 +108,7 @@ function CreateNew(props: ISignInProps) {
     };
 
     axios
-      .post("/competitor", data)
+      .post("/competitor", data, { headers: headers })
       .then((res) => {
         reset();
       })
@@ -122,7 +126,7 @@ function CreateNew(props: ISignInProps) {
     };
 
     axios
-      .post("/sponsor", data)
+      .post("/sponsor", data, { headers: headers })
       .then((res) => {
         reset();
       })

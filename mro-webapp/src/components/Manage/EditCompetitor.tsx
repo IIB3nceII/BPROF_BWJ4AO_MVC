@@ -9,6 +9,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import axios from "../../axios";
 import Footer from "../Footer";
@@ -35,11 +36,17 @@ export interface ICompetitor {
 function EditCompetitor({ match }: any) {
   const [competitor, setCompetitor] = useState<ICompetitor>();
 
+  const authentication = useSelector((state: any) => state.authentication);
+
   const history = useHistory();
+
+  const headers = {
+    Authorization: "Bearer " + authentication.account?.token,
+  };
 
   useEffect(() => {
     axios
-      .get(`/competitor/${match.params.id}`)
+      .get(`/competitor/${match.params.id}`, { headers: headers })
       .then((res) => {
         console.log(res);
         const newCompetitor = {
@@ -121,7 +128,7 @@ function EditCompetitor({ match }: any) {
 
   const editCompetitor = () => {
     axios
-      .put(`/competitor/${competitor?.CompetitorId}`, competitor)
+      .put(`/competitor/${competitor?.CompetitorId}`, competitor, { headers: headers })
       .then((res) => {
         history.push("/view");
       })
